@@ -1,26 +1,18 @@
-run project
+# INTRODUCTION - Lab 2
 
+Here, you can find our code required in the lab 2. 
 
-------------
-INTRODUCTION
-------------
+## INSTRUCTION
 
+Finally, as requested in step 6, we can do 3 things.
 
------------
-INSTRUCTION
------------
+First of all, enter http://localhost:8080: on your browser bar. 
+Then : 
 
-4 possible routes
+1.	If you add ```/hello?name=your-name``` to the url adress and enter your name after'=', it will display hello + your-name
 
-enter localhost:8080 then :
+2.	If you add ```/hello?name=Teo``` to the url adress and enter the name Teo, it will display a short intro of Teo
 
-1)	/hello?name=your-name
-enter your name after'=' it will display hello + your-name
+3.	If you add ```/about``` to the url adress, it will display a JSON file with informations
 
-2)	/hello?name=teo
-enter the name teo it will display a short intro of teo
-
-3)	/about
-enter /about just after the root will display a JSON file with informations
-
-4)  for everything else it will display 404 page not found
+For everything else, it will display 404 page not found.
