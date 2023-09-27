@@ -1,5 +1,5 @@
-module.exports = { 
-	 notFound: '<!DOCTYPE html>' +
+module.exports = 
+	'<!DOCTYPE html>' +
         '<html>' +
         '       <head>'+
         '               <meta charset="utf-8" />' +
@@ -10,4 +10,4 @@ module.exports = {
         '               <p>Page not found </p>' +
         '       </body>' +
         '</html>'
-};
+
