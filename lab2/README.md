@@ -1,13 +1,17 @@
 # INTRODUCTION - Lab 2
 
-Here, you can find our code required in the lab 2. 
+Here, you can find our code required in the lab 2!
 
-## INSTRUCTION
+### Installation
+First, install NodeJS using the following command on your terminal :
+```npm install```
 
-Finally, as requested in step 6, we can do 3 things.
+### Usage
+To run the code on your web browser : ```npm run start```
 
-First of all, enter http://localhost:8080: on your browser bar. 
-Then : 
+Now, you can enter http://localhost:8080: on your browser bar.
+
+Finally, as requested in step 6, we can do 3 things : 
 
 1.	If you add ```/hello?name=your-name``` to the url adress and enter your name after'=', it will display hello + your-name
 
