@@ -1,0 +1,62 @@
+.title {
+    background: rgb(255, 255, 255);
+    color : #696c70;
+    font-size : 20px;
+    /*padding: 10px;*/
+    text-align: center;
+}
+
+.paragraph{
+    text-align: center;
+}
+
+
+
+
+a {
+    color: #9db4d4;
+    text-decoration: none;
+  }
+  
+  
+  a:visited {
+    color: #9db4d4;
+  }
+  
+  
+  a:hover {
+    color: #c8dda8;
+  }
+  
+  
+  a:active {
+    color: #800000;
+}
+
+b {
+    color: #343536;
+    text-decoration: none;
+  }
+  
+  
+  b:visited {
+    color: #343536
+  }
+  
+  
+  b:hover {
+    color: #9db4d4;
+  }
+  
+  
+  b:active {
+    color: #800000;
+}
+  
+.list{
+    background: rgb(255, 255, 255);
+    color : #343536;
+    font-size : 15px;
+    padding: 10px;
+    text-align: center;
+}

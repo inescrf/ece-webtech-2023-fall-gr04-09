@@ -4,14 +4,15 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
+import './about.css';
 
 const About = () => {
   return (
     <div>
       <Header />
       <Navigation />
-      <h1>À propos</h1>
-      {/* Add your about page content here */}
+      <h1 className="title"> About </h1>
+      <p className="paragraph"> This is a simple website with some big data articles </p>
       <Footer />
     </div>
   );

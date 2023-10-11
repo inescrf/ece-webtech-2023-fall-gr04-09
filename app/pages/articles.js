@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import db from '../db.js';
+import './about.css';
 
 
 
@@ -13,16 +14,17 @@ const Articles = () => {
     <div>
       <Header />
       <Navigation />
-      <h1>Articles</h1>
-      <ul>
+      <h1 className="title"> Articles </h1>
+      <p className="list"> <ul>
         {db.articles.map((article) => (
           <li key={article.id}>
             <Link href={`/articles/${article.id}`}> 
-              <a>{article.title}</a>
+              <b>{article.title}</b>
             </Link>
           </li>
         ))}
       </ul>
+      </p>
       <Footer />
     </div>
   );
