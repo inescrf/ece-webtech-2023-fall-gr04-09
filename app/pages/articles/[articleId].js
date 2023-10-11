@@ -1,7 +1,7 @@
 // pages/articles/[articleId].js
 import React from 'react';
 import { useRouter } from 'next/router';
-import db from '../../app/db.js';
+import db from '../../db.js';
 
 const ArticlePage = () => {
   const router = useRouter();
