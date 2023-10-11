@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
-import db from '/home/teo/Bureau/web_project/ece-webtech-2023-fall-gr04-09/app/db.js';
+import db from '../../app/db.js';
 
 
 
