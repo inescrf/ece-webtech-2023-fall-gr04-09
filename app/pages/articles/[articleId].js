@@ -1,7 +1,7 @@
 // pages/articles/[articleId].js
 import React from 'react';
 import { useRouter } from 'next/router';
-import db from '/home/teo/Bureau/web_project/ece-webtech-2023-fall-gr04-09/app/db.js';
+import db from '../../app/db.js';
 
 const ArticlePage = () => {
   const router = useRouter();
