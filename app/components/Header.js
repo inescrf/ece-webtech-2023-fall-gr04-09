@@ -1,10 +1,11 @@
 // components/Header.js
 import React from 'react';
+import './components.css';
 
 const Header = () => {
   return (
-    <header>
-      <p> header </p>
+    <header className="header-style">
+      <p> Welcome to BigDataPulse ! </p>
     </header>
   );
 };

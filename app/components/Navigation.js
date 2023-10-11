@@ -6,18 +6,14 @@ const Navigation = () => {
   return (
     <nav>
       <ul>
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          <Link href="/about">About</Link>
-        </li>
-        <li>
-          <Link href="/contacts">Contacts</Link>
-        </li>
-        <li>
-          <Link href="/articles">Articles</Link>
-        </li>
+        <div className="title">  <Link href="/">Home</Link> </div>
+
+        <div className="title"> <Link href="/about">About</Link> </div>
+
+        <div className="title"> <Link href="/contacts">Contacts</Link> </div>
+
+        <div className="title"> <Link href="/articles">Articles</Link> </div>
+
       </ul>
     </nav>
   );
