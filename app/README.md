@@ -6,7 +6,7 @@ This is app for lab 4
 
 Make sure that you have node installed : ```node -v``` if not install it
 
-Then install project dependencies: ```npm install```
+Then install project dependencies: ```npm install``` and ```npm install next```
 
 
 ### Usage
