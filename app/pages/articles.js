@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import db from '../db.js';
-import './about.css';
+import '../styles/about.css';
 
 const Articles = () => {
   return (
