@@ -1,6 +1,6 @@
 // components/Header.js
 import React from 'react';
-import './components.css';
+import '../styles/components.css';
 
 const Header = () => {
   return (
@@ -11,4 +11,3 @@ const Header = () => {
 };
 
 export default Header;
-

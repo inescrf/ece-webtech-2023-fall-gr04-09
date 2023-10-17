@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
-import './about.css';
+import '../styles/about.css';
 
 const Contacts = () => {
   return (
@@ -19,4 +19,3 @@ const Contacts = () => {
 };
 
 export default Contacts;
-
