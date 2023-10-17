@@ -1,29 +1,24 @@
 import React from 'react';
 import Link from 'next/link';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Navigation from '../components/Navigation';
+import Layout from '../components/Layout';
 import './about.css';
 
 const Home = () => {
   return (
-    <div>
-      <Header />
-      <Navigation />
+    <Layout>
       <h1 className="title">Home Page</h1>
       <ul>
         <li>
-          <Link href="/about"><a className="banner-link">About</a></Link>
+          <Link className="banner-link" href="/about">About</Link>
         </li>
         <li>
-          <Link href="/contacts"><a className="banner-link">Contacts</a></Link>
+          <Link className="banner-link" href="/contacts">Contacts</Link>
         </li>
         <li>
-          <Link href="/articles"><a className="banner-link">Articles</a></Link>
+          <Link className="banner-link" href="/articles">Articles</Link>
         </li>
       </ul>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

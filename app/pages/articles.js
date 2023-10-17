@@ -1,19 +1,13 @@
 // pages/articles.js
 import React from 'react';
 import Link from 'next/link';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Navigation from '../components/Navigation';
+import Layout from '../components/Layout';
 import db from '../db.js';
 import './about.css';
 
-
-
 const Articles = () => {
   return (
-    <div>
-      <Header />
-      <Navigation />
+    <Layout>
       <h1 className="title"> Articles </h1>
       <p className="list"> <ul>
         {db.articles.map((article) => (
@@ -25,10 +19,8 @@ const Articles = () => {
         ))}
       </ul>
       </p>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 
 export default Articles;
-
