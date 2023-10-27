@@ -4,15 +4,16 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
-import '../styles/about.css';
+import '../styles/globals.css';
 
 const About = () => {
   return (
     <div>
       <Header />
       <Navigation />
-      <h1 className="title"> About </h1>
-      <p className="paragraph"> This is a simple website with some big data articles </p>
+      <h1 className="text-center font-bold text-[#5C785C] text-2xl"> About </h1>
+      <br></br>
+      <p className="paragraph text-center"> This is a simple website with some big data articles </p>
       <Footer />
     </div>
   );

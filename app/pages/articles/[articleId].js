@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import db from '../../db.js';
+import '../../styles/globals.css';
 
 const ArticlePage = () => {
   const router = useRouter();
