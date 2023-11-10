@@ -25,4 +25,12 @@ const Articles = () => {
   );
 };
 
+export async function getStaticProps(ctx) {
+  const articles = db.articles;
+  return {
+    props: {
+      articles: articles
+    }
+  }
+}
 export default Articles;
