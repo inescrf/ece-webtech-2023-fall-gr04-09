@@ -1,12 +1,12 @@
+
 import { useState, useEffect } from 'react';
-//import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import md from 'markdown-it';
 import Layout from '../../../components/Layout.js';
-import { corsHeaders } from '../../../components/cors.ts';
 
 export default function Articles({ id }) {
   const [article, setArticle] = useState(null);
-  //const supabase = useSupabaseClient();
+  const supabase = useSupabaseClient();
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -53,3 +53,4 @@ export async function getServerSideProps(context) {
     },
   }
 }
+

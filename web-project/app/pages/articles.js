@@ -22,7 +22,7 @@ const RepasLayout = () => {
           ))}
         </div>
 
-        {/* Troisième colonne */}
+        {/* Article de la communauté */}
         <div className="flex-grow p-4 h-full">
           <h2 className="text-xl font-bold mb-4">Colonne 3</h2>
           {[...Array(4)].map((_, index) => (
