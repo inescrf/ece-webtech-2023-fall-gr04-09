@@ -41,7 +41,7 @@ const RandomMealComponent = () => {
     <div>
       {mealData && (
         <div>
-          <h2>Informations about meal</h2>
+          <h2>-------------------</h2>
           <p>Meal name : {mealData.strMeal}</p>
           <p>Meal type : {mealData.strCategory}</p>
           <Link href={`/articles/${mealData.idMeal}`}>

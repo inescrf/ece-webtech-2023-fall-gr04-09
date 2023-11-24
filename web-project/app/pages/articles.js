@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout.js'
 import RandomMealComponent from '../components/RandomMealComponent.js';
+import UserRandomMealComponent from '../components/UserRandomMealComponent.js';
 
 const RepasLayout = () => {
   return (
@@ -24,9 +25,9 @@ const RepasLayout = () => {
 
         {/* Article de la communauté */}
         <div className="flex-grow p-4 h-full">
-          <h2 className="text-xl font-bold mb-4">Colonne 3</h2>
+          <h2 className="text-xl font-bold mb-4">User meals</h2>
           {[...Array(4)].map((_, index) => (
-            <RandomMealComponent key={index} />
+            <UserRandomMealComponent key={index} />
           ))}
         </div>
       </div>
