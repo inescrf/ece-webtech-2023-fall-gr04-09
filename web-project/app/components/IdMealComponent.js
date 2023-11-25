@@ -74,55 +74,55 @@ const IdMealComponent = ({ mealId }) => {
   };
 
   return (
-<div className="max-w-full mx-auto p-6 bg-white rounded-md shadow-md space-y-6">      {isEmpty ? (
-        <p>Aucune donnée trouvée pour cet ID de repas.</p>
-      ) : (
-        mealData && (
-          <div className="flex flex-col lg:flex-row lg:space-x-4">
-            {/* Premier compartiment */}
-            <div className="mb-4 lg:w-1/2">
-              <h2 className="text-3xl font-bold mb-4">{mealData.strMeal}</h2>
-              <img className="object-cover mb-4 rounded" src={mealData.strMealThumb} alt={mealData.strMeal} />
-              <div>Meal creator : {mealData.emailCreator}</div>
-            </div>
-
-            {/* Deuxième compartiment */}
-            <div className="lg:w-1/2">
-              <div className="mb-4">
-                <h3 className="text-xl font-semibold mb-2">Ingredients and Measures:</h3>
-                <ul>
-                  {Array.from({ length: 20 }, (_, index) => index + 1).map((index) => {
-                    const ingredient = mealData[`strIngredient${index}`];
-                    const measure = mealData[`strMeasure${index}`];
-
-                    if (ingredient && measure) {
-                      return (
-                        <li key={index} className="text-lg mb-1">
-                          {ingredient} - {measure}
-                        </li>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </ul>
-              </div>
-              <p className="text-lg text-blue-500">
-                Youtube video: <a href={mealData.strYoutube} target="_blank" rel="noopener noreferrer">{mealData.strYoutube}</a>
-              </p>
-              <p className="text-lg mb-2">
-                Instructions: {showInstructions ? mealData.strInstructions : '   '}
-              </p>
-              <button
-                className="bg-blue-500 text-white px-4 py-2 rounded"
-                onClick={handleToggleInstructions}
-              >
-                {showInstructions ? 'Hide Instructions' : 'See Instructions   '}
-              </button>
-            </div>
+    <div className="max-w-full mx-auto p-6 bg-white rounded-md shadow-md space-y-6">      {isEmpty ? (
+      <p>Aucune donnée trouvée pour cet ID de repas.</p>
+    ) : (
+      mealData && (
+        <div className="flex flex-col lg:flex-row lg:space-x-4">
+          {/* Premier compartiment */}
+          <div className="mb-4 lg:w-1/2">
+            <h2 className="text-3xl font-bold mb-4">{mealData.strMeal}</h2>
+            <img className="object-cover mb-4 rounded" src={mealData.strMealThumb} alt={mealData.strMeal} />
+            <div>Meal creator : {mealData.emailCreator}</div>
           </div>
-        )
-      )}
+
+          {/* Deuxième compartiment */}
+          <div className="lg:w-1/2">
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold mb-2">Ingredients and Measures:</h3>
+              <ul>
+                {Array.from({ length: 20 }, (_, index) => index + 1).map((index) => {
+                  const ingredient = mealData[`strIngredient${index}`];
+                  const measure = mealData[`strMeasure${index}`];
+
+                  if (ingredient && measure) {
+                    return (
+                      <li key={index} className="text-lg mb-1">
+                        {ingredient} - {measure}
+                      </li>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
+              </ul>
+            </div>
+            <p className="text-lg text-blue-500">
+              Youtube video: <a href={mealData.strYoutube} target="_blank" rel="noopener noreferrer">{mealData.strYoutube}</a>
+            </p>
+            <p className="text-lg mb-2">
+              Instructions: {showInstructions ? mealData.strInstructions : '   '}
+            </p>
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded"
+              onClick={handleToggleInstructions}
+            >
+              {showInstructions ? 'Hide Instructions' : 'See Instructions   '}
+            </button>
+          </div>
+        </div>
+      )
+    )}
     </div>
   );
 };

@@ -6,7 +6,7 @@ export default function Layout({
   children,
   title,
   description
-}){
+}) {
   return (
     <>
       <Head>
@@ -15,7 +15,7 @@ export default function Layout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <Header/>
+        <Header />
         <main className="py-10 min-h-screen max-w-full md:max-w-2xl md:mx-auto">
           {children}
         </main>

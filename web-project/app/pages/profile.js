@@ -19,11 +19,14 @@ export default function ProfileLayout() {
     return null;
   }
 
+  const datePart = profile.created_at.substring(0, 10);
   return (
     <Layout>
       <div className="flex justify-center items-stretch">
         <div>
           <h2>Your Profile :)</h2>
+          <p> --</p>
+          <p>Member since : {datePart} </p>
           <p> --</p>
           <p>Email : {profile.email}</p>
           <p> --</p>
@@ -33,7 +36,7 @@ export default function ProfileLayout() {
           <p> --</p>
           <p> <Link className="rounded py-1 px-3 text-white bg-slate-500 hover:bg-blue-500" href="/profile/my-comments">My comments</Link> </p>
 
-          
+
         </div>
       </div>
     </Layout>

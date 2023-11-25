@@ -45,9 +45,9 @@ const RandomMealComponent = () => {
           <p>Meal name : {mealData.strMeal}</p>
           <p>Meal type : {mealData.strCategory}</p>
           <Link href={`/articles/${mealData.idMeal}`}>
-            
-              <img src={mealData.strMealThumb} alt={mealData.strMeal} />
-            
+
+            <img src={mealData.strMealThumb} alt={mealData.strMeal} />
+
           </Link>
         </div>
       )}
