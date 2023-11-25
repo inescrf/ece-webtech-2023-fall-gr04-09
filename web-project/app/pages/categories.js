@@ -26,13 +26,13 @@ const CategoriesPage = () => {
           <div key={category.strCategory} className="flex-grow p-4 h-full w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/7">
             <h2 className="text-xl font-bold mb-4">{category.strCategory}</h2>
             <Link href={`/categories/${category.strCategory}`}>
-              
-                <img
-                  src={category.strCategoryThumb}
-                  alt={category.strCategory}
-                  className="w-full h-40 object-cover mb-4"
-                />
-              
+
+              <img
+                src={category.strCategoryThumb}
+                alt={category.strCategory}
+                className="w-full h-40 object-cover mb-4"
+              />
+
             </Link>
           </div>
         ))}

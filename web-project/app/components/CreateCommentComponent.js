@@ -1,56 +1,78 @@
-import { useContext, useState } from 'react';
-import UserContext from './UserContext';
+import React, { useContext, useState } from 'react';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useRouter } from 'next/router';
+import UserContext from './UserContext';
+import RatingComponent from './RatingComponent';
 
 const CreateCommentComponent = ({ mealId }) => {
-    const idMeal = mealId;
-    const { profile } = useContext(UserContext);
-    const mailUser = profile ? profile.email : '';
-  
-    const supabase = useSupabaseClient();
-    const [comment, setComment] = useState(null);
-    const [formData, setFormData] = useState({
-      idMeal: '',
-      comment: '',
-      commentCreator: mailUser,  // Utilisez mailUser comme valeur initiale
-    });
-  
-    const onSubmit = async function (e) {
-      e.preventDefault();
-  
-      const { comment, commentCreator } = formData;
-  
-      try {
-        const { data, error } = await supabase
-          .from('comments')
-          .upsert([
-            {
-              idMeal,
-              comment,
-              commentCreator,
-              created_at: new Date(),
-            },
-          ]);
-  
-        if (error) {
-          throw new Error(error.message);
-        }
-  
-        setComment('Comment inserted successfully!');
-        setFormData({
-          comment: '',
-          commentCreator: mailUser,  // Réinitialisez la valeur à mailUser après l'envoi
-        });
-      } catch (error) {
-        console.error('Error inserting comment:', error.message);
+  const idMeal = mealId;
+  const { profile } = useContext(UserContext);
+  const mailUser = profile ? profile.email : '';
+
+  const supabase = useSupabaseClient();
+  const [comment, setComment] = useState(null);
+  const [formData, setFormData] = useState({
+    idMeal: '',
+    comment: '',
+    commentCreator: mailUser,
+    note: 0,
+  });
+
+  const router = useRouter();
+
+  // Ajoutez cette fonction pour mettre à jour la note dans le formulaire
+  const handleRatingChange = (newRating) => {
+    setFormData({ ...formData, note: newRating });
+  };
+
+  const onSubmit = async function (e) {
+    e.preventDefault();
+
+    const { comment, commentCreator, note } = formData;
+
+    try {
+      const { data, error } = await supabase
+        .from('comments')
+        .upsert([
+          {
+            idMeal,
+            comment,
+            commentCreator,
+            created_at: new Date(),
+            note,
+          },
+        ]);
+
+      if (error) {
+        throw new Error(error.message);
       }
-    };
-  
+
+      setComment('Comment inserted successfully!');
+      setFormData({
+        comment: '',
+        commentCreator: mailUser,
+        note: 0,
+      });
+
+      // Redirigez l'utilisateur vers la page actuelle pour rafraîchir
+      router.replace(router.asPath);
+    } catch (error) {
+      console.error('Error inserting comment:', error.message);
+    }
+  };
 
   return (
     <div>
-      <form className="[&_span]:block grid gap-3" onSubmit={onSubmit}>
+      <form className="grid gap-3" onSubmit={onSubmit}>
+        <h2 className="text-2xl font-bold mb-4">Leave a comment here</h2>
         <div>
+          <label>
+            <RatingComponent
+              rating={formData.note}
+              readOnly={false}
+              onChange={handleRatingChange} // Passer la fonction de rappel onChange
+            />
+          </label>
           <label>
             <span>Your Comment</span>
             <textarea
@@ -60,18 +82,17 @@ const CreateCommentComponent = ({ mealId }) => {
             />
           </label>
           <label>
-  <span>Your name</span>
-  <input
-    type="text"
-    value={formData.commentCreator}  // Utilisez formData.commentCreator comme valeur
-    onChange={(e) => setFormData({ ...formData, commentCreator: e.target.value })}
-  />
-</label>
-
+            <span>Your name</span>
+            <input
+              type="text"
+              value={formData.commentCreator}
+              onChange={(e) => setFormData({ ...formData, commentCreator: e.target.value })}
+            />
+          </label>
         </div>
         <div>
           <button
-            type="submit" // Ajoutez cette ligne pour indiquer que le bouton est de type "submit"
+            type="submit"
             className="rounded py-1 px-3 text-white bg-slate-500 hover:bg-blue-500"
           >
             Send

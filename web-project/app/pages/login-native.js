@@ -1,9 +1,9 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import Layout from '../components/Layout'
 
 export default function Page() {
   const [message, setMessage] = useState(null)
-  const onSubmit = function(e){
+  const onSubmit = function (e) {
     e.preventDefault()
     const data = new FormData(e.target)
     setMessage(

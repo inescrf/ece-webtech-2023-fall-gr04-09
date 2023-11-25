@@ -19,15 +19,14 @@ const ArticlePage = () => {
         <div >
           {id && <IdMealComponent mealId={id} />}
         </div>
-        <div className="w-1/2 pl-4"> 
-        {id && <CommentsComponent mealId={id} />}
+        <div className="w-1/2 pl-4">
+          {id && <CommentsComponent mealId={id} />}
         </div>
         <div className="w-1/2 pl-4">
-        <RatingComponent/>
           {id && <CreateCommentComponent mealId={id} />}
         </div>
-        
-        
+
+
       </div>
     </Layout>
   );

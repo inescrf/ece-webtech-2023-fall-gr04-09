@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
       initialSession={pageProps.initialSession}
     >
       <ContextProvider>
-        <Component {...pageProps}/>
+        <Component {...pageProps} />
       </ContextProvider>
     </SessionContextProvider>
   )

@@ -1,10 +1,10 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import Layout from '../components/Layout'
 
 export default function Page() {
   const [data, setData] = useState({})
   const [message, setMessage] = useState(null)
-  const onSubmit = function(e){
+  const onSubmit = function (e) {
     e.preventDefault()
     setMessage(
       <div>
@@ -27,7 +27,7 @@ export default function Page() {
                 type="text"
                 name="username"
                 value={data.username}
-                onChange={e => setData({...data, ...{username: e.target.value}})}
+                onChange={e => setData({ ...data, ...{ username: e.target.value } })}
               />
             </label>
           </div>
@@ -38,7 +38,7 @@ export default function Page() {
                 type="password"
                 name="password"
                 value={data.password}
-                onChange={e => setData({...data, ...{password: e.target.value}})}
+                onChange={e => setData({ ...data, ...{ password: e.target.value } })}
               />
             </label>
           </div>

@@ -1,9 +1,9 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import Layout from '../components/Layout'
 
 export default function Page() {
   const [count, setCount] = useState(0)
-  const onIncrement = function(e){
+  const onIncrement = function (e) {
     setCount(count + 1)
   }
   return (

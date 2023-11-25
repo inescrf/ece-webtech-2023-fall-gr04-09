@@ -1,31 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const RatingComponent = () => {
-  const [rating, setRating] = useState(0);
+const RatingComponent = ({ rating, readOnly, onChange }) => {
+  const [selectedRating, setSelectedRating] = useState(rating);
 
   const handleClick = (value) => {
-    setRating(value);
+    if (!readOnly) {
+      setSelectedRating(value);
+      onChange(value); // Appel de la fonction de rappel onChange
+    }
   };
+
+  useEffect(() => {
+    setSelectedRating(rating);
+  }, [rating]);
 
   return (
     <div>
-      <h1 className='wt-title'>Comment</h1>
-      <div>
-        {[1, 2, 3, 4, 5].map((star) => (
-          <span
-            key={star}
-            onClick={() => handleClick(star)}
-            style={{
-              cursor: 'pointer',
-              color: star <= rating ? 'gold' : 'gray',
-              fontSize: '24px', 
-              marginRight: '5px'
-            }}
-          >
-            ★
-          </span>
-        ))}
-      </div>
+      {[1, 2, 3, 4, 5].map((star) => (
+        <span
+          key={star}
+          onClick={() => handleClick(star)}
+          style={{
+            cursor: readOnly ? 'default' : 'pointer',
+            color: star <= selectedRating ? 'gold' : 'gray',
+            fontSize: '24px',
+            marginRight: '5px',
+          }}
+        >
+          ★
+        </span>
+      ))}
     </div>
   );
 };

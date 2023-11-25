@@ -44,9 +44,9 @@ const CategoryMealComponent = ({ mealCat }) => {
           <div key={meal.idMeal} className="p-4">
             <h2 className="text-xl font-bold mb-2">{meal.strMeal}</h2>
             <Link href={`/articles/${meal.idMeal}`}>
-              
-                <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-40 object-cover mb-2" />
-              
+
+              <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-40 object-cover mb-2" />
+
             </Link>
           </div>
         ))}
