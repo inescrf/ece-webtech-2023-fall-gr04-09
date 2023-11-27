@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
+import GravatarComponent from './GravatarComponent';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -83,7 +84,9 @@ const IdMealComponent = ({ mealId }) => {
           <div className="mb-4 lg:w-1/2">
             <h2 className="text-3xl font-bold mb-4">{mealData.strMeal}</h2>
             <img className="object-cover mb-4 rounded" src={mealData.strMealThumb} alt={mealData.strMeal} />
-            <div>Meal creator : {mealData.emailCreator}</div>
+            <div>Meal creator : {mealData.emailCreator}
+              <GravatarComponent email={mealData.emailCreator} size={75} />
+            </div>
           </div>
 
           {/* Deuxième compartiment */}

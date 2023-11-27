@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import Layout from '../components/Layout.js';
 import UserContext from '../components/UserContext.js';
 import Link from 'next/link'
+import GravatarComponent from '../components/GravatarComponent';
+
 
 
 export default function ProfileLayout() {
@@ -25,6 +27,8 @@ export default function ProfileLayout() {
       <div className="flex justify-center items-stretch">
         <div>
           <h2>Your Profile :)</h2>
+          <GravatarComponent email={profile.email} size={250} />
+
           <p> --</p>
           <p>User name : {profile.user_metadata?.user_name}</p>
           <p> --</p>

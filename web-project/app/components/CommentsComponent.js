@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import UserContext from '../components/UserContext';
 import RatingComponent from './RatingComponent';
+import GravatarComponent from './GravatarComponent';
+
 
 const CommentsComponent = ({ mealId }) => {
   const supabase = useSupabaseClient();
@@ -147,6 +149,9 @@ const CommentsComponent = ({ mealId }) => {
                     </span>
                   </div>
 
+                  {/* Ajouter GravatarComponent ici */}
+                  <GravatarComponent email={comment.commentCreator} size={75} />
+
                   <div>
                     <p className="text-gray-800">{comment.comment}</p>
                     <div className="flex items-center gap-2">
@@ -169,6 +174,7 @@ const CommentsComponent = ({ mealId }) => {
                       </div>
                     )}
                   </div>
+
                 </li>
               ))}
             </ul>
