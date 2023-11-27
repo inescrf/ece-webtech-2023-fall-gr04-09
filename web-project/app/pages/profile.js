@@ -1,51 +1,64 @@
 import React, { useContext, useEffect } from 'react';
 import Layout from '../components/Layout.js';
 import UserContext from '../components/UserContext.js';
-import Link from 'next/link'
+import Link from 'next/link';
 import GravatarComponent from '../components/GravatarComponent';
-
-
 
 export default function ProfileLayout() {
   const { profile } = useContext(UserContext);
 
   useEffect(() => {
-    // Redirect to localhost:3000 if the profile is null
+    // Rediriger vers localhost:3000 si le profil est null
     if (!profile) {
       window.location.href = 'http://localhost:3000';
     }
   }, [profile]);
 
   if (!profile) {
-    // Return null or a loading indicator if the profile is null
+    // Retourner null ou un indicateur de chargement si le profil est null
     return null;
   }
 
   const datePart = profile.created_at.substring(0, 10);
+
   return (
     <Layout>
-      <div className="flex justify-center items-stretch">
-        <div>
-          <h2>Your Profile :)</h2>
-          <GravatarComponent email={profile.email} size={250} />
+      <div className="flex justify-center items-center flex-col">
+        <h2 className="text-3xl font-bold mb-4">Your Profile :)</h2>
+        <GravatarComponent email={profile.email} size={250} />
 
-          <p> --</p>
-          <p>User name : {profile.user_metadata?.user_name}</p>
-          <p> --</p>
-          <p>Email : {profile.email}</p>
-          <p> --</p>
-          <p>Member since : {datePart} </p>
-          <p> --</p>
-          <p> <Link className="rounded py-1 px-3 text-white bg-slate-500 hover:bg-blue-500" href="/profile/create-article">Create an article</Link> </p>
-          <p> --</p>
-          <p> <Link className="rounded py-1 px-3 text-white bg-slate-500 hover:bg-blue-500" href="/profile/my-articles">My articles</Link> </p>
-          <p> --</p>
-          <p> <Link className="rounded py-1 px-3 text-white bg-slate-500 hover:bg-blue-500" href="/profile/my-comments">My comments</Link> </p>
+        <div className="border-t-2 border-gray-200 my-4"></div>
 
+        <div className="text-lg">
+          <p>
+            <span className="font-semibold">User Name:</span> {profile.user_metadata?.user_name}
+          </p>
+          <p>
+            <span className="font-semibold">Email:</span> {profile.email}
+          </p>
+          <p>
+            <span className="font-semibold">Member Since:</span> {datePart}
+          </p>
+        </div>
 
+        <div className="border-t-2 border-gray-200 my-4"></div>
+
+        <div className="space-y-4 space-x-4">
+          <Link href="/profile/create-article"
+            className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">            Create an Article
+          </Link>
+
+          <Link href="/profile/my-articles"
+            className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">            My Articles
+
+          </Link>
+
+          <Link href="/profile/my-comments"
+            className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">
+            My Comments
+          </Link>
         </div>
       </div>
     </Layout>
   );
-
 }

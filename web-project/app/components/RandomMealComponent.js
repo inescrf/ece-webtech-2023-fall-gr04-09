@@ -10,7 +10,7 @@ const fetchDataFromApi = async (apiUrl) => {
     }
 
     const data = await response.json();
-    return data.meals[0]; // Supposant qu'il y a un repas dans le tableau
+    return data.meals[0]; 
   } catch (error) {
     console.error('Erreur lors de la requête API :', error);
     throw error;

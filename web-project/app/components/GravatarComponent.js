@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { createHash } from 'crypto';
-import md5 from 'md5';
 
 const getGravatarURL = (email, size) => {
   const hash = createHash('md5').update(email.toLowerCase().trim()).digest('hex');
@@ -12,14 +11,14 @@ const GravatarComponent = ({ email, size }) => {
 
   useEffect(() => {
     displayGravatar();
-  }, [email, size]); // Appeler displayGravatar lorsque l'email ou la taille changent
+  }, [email, size]); // call gravatar when email or size change
 
   const displayGravatar = () => {
     if (email) {
       const gravatarURL = getGravatarURL(email, size);
       setAvatarURL(gravatarURL);
     } else {
-      // Si aucun e-mail n'est saisi, affiche l'image par défaut de Gravatar
+      // if no mail it print defaut gravatar picture
       setAvatarURL(`https://www.gravatar.com/avatar/default?s=${size}`);
     }
   };
