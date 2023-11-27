@@ -82,7 +82,7 @@ const CreateCommentComponent = ({ mealId }) => {
             />
           </label>
           <label>
-            <span>Your name</span>
+            <span>Your email</span>
             <input
               type="text"
               value={formData.commentCreator}

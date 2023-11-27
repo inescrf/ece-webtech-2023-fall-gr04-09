@@ -1,15 +1,16 @@
 import Link from 'next/link'
-import OutlineUserCircleIcon from '@heroicons/react/24/outline/UserCircleIcon'
 import { useContext } from 'react';
 import UserContext from './UserContext'
+import GravatarComponent from './GravatarComponent';
+
 
 export default function Header() {
   const { profile, login, logout } = useContext(UserContext)
   console.log('Informations de la personne connectée :', profile);
   return (
 
-<header className="fixed top-0 left-0 right-0 bg-slate-200 px-10 py-2 flex justify-between items-center">
-          <Link href={`/`} className="flex-grow flex items-center">
+    <header className="fixed top-0 left-0 right-0 bg-slate-200 px-10 py-2 flex justify-between items-center">
+      <Link href={`/`} className="flex-grow flex items-center">
 
         <span className="rounded py-1 px-2 hover:bg-slate-600 hover:text-slate-100">
           Web-tech gr04-09
@@ -41,7 +42,9 @@ export default function Header() {
           <li className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">
             <Link href="/profile" className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6">
               My profile : {profile.user_metadata?.user_name}
-              <OutlineUserCircleIcon />
+
+              <GravatarComponent email={profile.email} size={25} />
+
             </Link>
           </li>
         )}
