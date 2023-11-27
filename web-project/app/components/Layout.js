@@ -17,7 +17,9 @@ export default function Layout({
       <div>
         <Header />
         <main className="py-10 min-h-screen max-w-full md:max-w-2xl md:mx-auto">
+        <div className="container mx-auto mt-10 p-4">
           {children}
+          </div>
         </main>
         <Footer />
       </div>
