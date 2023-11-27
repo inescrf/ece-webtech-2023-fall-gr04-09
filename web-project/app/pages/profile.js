@@ -26,9 +26,11 @@ export default function ProfileLayout() {
         <div>
           <h2>Your Profile :)</h2>
           <p> --</p>
-          <p>Member since : {datePart} </p>
+          <p>User name : {profile.user_metadata?.user_name}</p>
           <p> --</p>
           <p>Email : {profile.email}</p>
+          <p> --</p>
+          <p>Member since : {datePart} </p>
           <p> --</p>
           <p> <Link className="rounded py-1 px-3 text-white bg-slate-500 hover:bg-blue-500" href="/profile/create-article">Create an article</Link> </p>
           <p> --</p>

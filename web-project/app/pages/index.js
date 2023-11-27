@@ -13,7 +13,7 @@ export default function Page() {
       <h1 className='wt-title'>
 
         {profile ? (
-          <p>Welcome {profile.email}!</p>
+          <p>Welcome {profile.user_metadata?.user_name}!</p>
         ) : (
           <p>Welcome !</p>
         )}
