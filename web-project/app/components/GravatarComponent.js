@@ -15,12 +15,12 @@ const GravatarComponent = ({ email, size }) => {
   }, [email, size]); // Appeler displayGravatar lorsque l'email ou la taille changent
 
   const displayGravatar = () => {
-    if (email.trim() !== '') {
+    if (email) {
       const gravatarURL = getGravatarURL(email, size);
       setAvatarURL(gravatarURL);
     } else {
       // Si aucun e-mail n'est saisi, affiche l'image par défaut de Gravatar
-      setAvatarURL('https://www.gravatar.com/avatar/default?s=' + size);
+      setAvatarURL(`https://www.gravatar.com/avatar/default?s=${size}`);
     }
   };
 
