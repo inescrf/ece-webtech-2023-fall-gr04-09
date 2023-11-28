@@ -1,4 +1,3 @@
-// modify-my-article.js
 import { useRouter } from 'next/router';
 import { useContext, useState, useEffect } from 'react';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
