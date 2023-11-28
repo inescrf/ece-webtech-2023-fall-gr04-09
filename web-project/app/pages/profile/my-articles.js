@@ -1,11 +1,9 @@
 import { useContext, useState, useEffect } from 'react'
-import Link from 'next/link'
-import { ChevronRightIcon } from '@heroicons/react/20/solid'
-import Layout from '../../components/Layout.js'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import UserContext from '../../components/UserContext.js'
+import Link from 'next/link'
+import Layout from '../../components/Layout.js'
 
-// ... (imports)
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
@@ -19,7 +17,7 @@ export default function Articles() {
 
   const handleDeleteConfirmation = async (confirmation) => {
     if (confirmation) {
-      // Supprimez l'article de la base de données ici
+      // delete the article
       const { data, error } = await supabase
         .from('articles')
         .delete()
@@ -29,18 +27,28 @@ export default function Articles() {
         console.error('Error deleting article:', error.message);
         return;
       }
+      //delete all the comments made on the article
+      const { commentData, commentError } = await supabase
+        .from('comments')
+        .delete()
+        .eq('idMeal', confirmation.idMeal);
 
-      // Mettez à jour la liste des articles après la suppression
+      if (commentError) {
+        console.error('Error deleting article:', commentData.message);
+        return;
+      }
+
+      // update articles list after delete an article
       const updatedArticles = articles.filter((article) => article.strMeal !== confirmation.strMeal);
       setArticles(updatedArticles);
     }
 
-    // Réinitialisez la variable de confirmation après la suppression ou l'annulation
+    // reinitialisation of the variable of confirmation after the confirmation or the cancelation
     setDeleteConfirmation(null);
   };
 
   useEffect(() => {
-    // Chargez les articles depuis la base de données ici
+    //load article
     (async () => {
       if (profile) {
         let { data, error } = await supabase
@@ -116,11 +124,10 @@ export default function Articles() {
           </div>
         </div>
       </div>
-      {/* Boîte de dialogue de confirmation */}
       {deleteConfirmation && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-4 rounded shadow-lg">
-            <p>Are you sure you want to delete the article : {deleteConfirmation.strMeal} ?</p>
+            <p>Are you sure you want to delete the article : {deleteConfirmation.strMeal} and all the comments ?</p>
             <div className="flex justify-end mt-4">
               <button
                 onClick={() => handleDeleteConfirmation(deleteConfirmation)}

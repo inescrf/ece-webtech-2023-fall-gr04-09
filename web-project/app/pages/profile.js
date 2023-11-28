@@ -25,7 +25,9 @@ export default function ProfileLayout() {
     <Layout>
       <div className="flex justify-center items-center flex-col">
         <h2 className="text-3xl font-bold mb-4">Your Profile :)</h2>
+        
         <GravatarComponent email={profile.email} size={250} />
+
 
         <div className="border-t-2 border-gray-200 my-4"></div>
 
@@ -45,12 +47,13 @@ export default function ProfileLayout() {
 
         <div className="space-y-4 space-x-4">
           <Link href="/profile/create-article"
-            className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">            Create an Article
+            className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">
+            Create an Article
           </Link>
 
           <Link href="/profile/my-articles"
-            className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">            My Articles
-
+            className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">
+            My Articles
           </Link>
 
           <Link href="/profile/my-comments"
