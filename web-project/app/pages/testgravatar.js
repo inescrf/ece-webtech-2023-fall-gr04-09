@@ -1,6 +1,5 @@
 import GravatarComponent from '../components/GravatarComponent';
 
-// Utilisez la composante dans votre page
 const MyPage = () => {
   return (
     <div>
