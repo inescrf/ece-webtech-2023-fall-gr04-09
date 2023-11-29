@@ -80,7 +80,6 @@ const IdMealComponent = ({ mealId }) => {
     ) : (
       mealData && (
         <div className="flex flex-col lg:flex-row lg:space-x-4">
-          {/* Premier compartiment */}
           <div className="mb-4 lg:w-1/2">
             <h2 className="text-3xl font-bold mb-4">{mealData.strMeal}</h2>
             <img className="object-cover mb-4 rounded" src={mealData.strMealThumb} alt={mealData.strMeal} />
@@ -89,7 +88,6 @@ const IdMealComponent = ({ mealId }) => {
             </div>
           </div>
 
-          {/* Deuxième compartiment */}
           <div className="lg:w-1/2">
             <div className="mb-4">
               <h3 className="text-xl font-semibold mb-2">Ingredients and Measures:</h3>
