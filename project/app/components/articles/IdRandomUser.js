@@ -6,7 +6,8 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const UserRandomMealComponent = () => {
+
+const idRandomUser = () => {
   const [mealData, setMealData] = useState(null);
 
   useEffect(() => {
@@ -22,8 +23,7 @@ const UserRandomMealComponent = () => {
           return;
         }
 
-        // Set mealData with the retrieved data
-        setMealData(data[0]); // Supposant qu'il y a un article dans le tableau
+        setMealData(data[0]); 
       } catch (error) {
         console.error('Error fetching random article details:', error.message);
       }
@@ -49,4 +49,4 @@ const UserRandomMealComponent = () => {
   );
 };
 
-export default UserRandomMealComponent;
+export default idRandomUser;
