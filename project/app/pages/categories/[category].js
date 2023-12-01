@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
-import CategoryMealComponent from '../../components/CategoryMealComponent';
+import CategoryMealComponent from '../../components/articles/Category';
 
 const CategoryPage = () => {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const RatingComponent = ({ rating, readOnly, onChange }) => {
+const Rating = ({ rating, readOnly, onChange }) => {
   const [selectedRating, setSelectedRating] = useState(rating);
 
   const handleClick = (value) => {
@@ -34,4 +34,4 @@ const RatingComponent = ({ rating, readOnly, onChange }) => {
   );
 };
 
-export default RatingComponent;
+export default Rating;

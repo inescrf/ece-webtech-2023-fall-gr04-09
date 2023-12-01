@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
-import IdMealComponent from '../../components/IdMealComponent';
-import CreateCommentComponent from '../../components/CreateCommentComponent';
-import RatingComponent from '../../components/RatingComponent';
-import CommentsComponent from '../../components/CommentsComponent';
+import IdMealComponent from '../../components/articles/idAPI';
+import NewComment from '../../components/comments/NewComment';
+import RatingComponent from '../../components/comments/Rating';
+import Comment from '../../components/comments/Comment';
 
 
 
@@ -20,10 +20,10 @@ const ArticlePage = () => {
           {id && <IdMealComponent mealId={id} />}
         </div>
         <div className="w-1/2 pl-4">
-          {id && <CommentsComponent mealId={id} />}
+          {id && <Comment mealId={id} />}
         </div>
         <div className="w-1/2 pl-4">
-          {id && <CreateCommentComponent mealId={id} />}
+          {id && <NewComment mealId={id} />}
         </div>
 
 

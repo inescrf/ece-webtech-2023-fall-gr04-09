@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout.js'
-import RandomMealComponent from '../components/RandomMealComponent.js';
-import UserRandomMealComponent from '../components/UserRandomMealComponent.js';
+import RandomMealComponent from '../components/articles/idAPIRandom.js';
+import UserRandomMealComponent from '../components/articles/IdRandomUser.js';
 
 const RepasLayout = () => {
   return (

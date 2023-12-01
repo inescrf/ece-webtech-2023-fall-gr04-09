@@ -1,16 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
-import UserContext from '../components/UserContext';
-import RatingComponent from './RatingComponent';
-import GravatarComponent from './GravatarComponent';
+import UserContext from '../UserContext';
+import Rating from './Rating';
+import GravatarComponent from '../GravatarComponent';
+import { useRouter } from 'next/router';
 
 
-const CommentsComponent = ({ mealId }) => {
+
+const Comment = ({ mealId }) => {
   const supabase = useSupabaseClient();
   const [comments, setComments] = useState([]);
-  const { profile } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  
   const [editingCommentId, setEditingCommentId] = useState(null);
   const [editCommentText, setEditCommentText] = useState('');
+
+  const router = useRouter();
+
 
   const handleEditClick = (commentId, initialText) => {
     setEditingCommentId(commentId);
@@ -48,6 +54,7 @@ const CommentsComponent = ({ mealId }) => {
     } catch (error) {
       console.error('Error updating comment:', error.message);
     }
+    router.replace(router.asPath);
   };
 
   const handleEditCancel = () => {
@@ -84,6 +91,7 @@ const CommentsComponent = ({ mealId }) => {
     } catch (error) {
       console.error('Error deleting comment:', error.message);
     }
+    router.replace(router.asPath);
   };
 
   useEffect(() => {
@@ -149,15 +157,14 @@ const CommentsComponent = ({ mealId }) => {
                     </span>
                   </div>
 
-                  {/* Ajouter GravatarComponent ici */}
                   <GravatarComponent email={comment.commentCreator} size={75} />
 
                   <div>
                     <p className="text-gray-800">{comment.comment}</p>
                     <div className="flex items-center gap-2">
-                      <RatingComponent rating={comment.note} readOnly={true} />
+                      <Rating rating={comment.note} readOnly={true} />
                     </div>
-                    {comment.commentCreator === (profile && profile.email) && (
+                    {comment.commentCreator === (user && user.email) && (
                       <div className="mt-2">
                         <button
                           className="bg-blue-500 text-white px-3 py-1 mr-2"
@@ -185,4 +192,4 @@ const CommentsComponent = ({ mealId }) => {
   );
 };
 
-export default CommentsComponent;
+export default Comment;

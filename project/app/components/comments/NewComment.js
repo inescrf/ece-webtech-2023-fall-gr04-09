@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import { useRouter } from 'next/router';
-import UserContext from './UserContext';
-import RatingComponent from './RatingComponent';
+import UserContext from '../UserContext';
+import RatingComponent from './Rating';
 
-const CreateCommentComponent = ({ mealId }) => {
+const NewComment = ({ mealId }) => {
   const idMeal = mealId;
-  const { profile } = useContext(UserContext);
-  const mailUser = profile ? profile.email : '';
+  const { user } = useContext(UserContext);
+  const mailUser = user ? user.email : '';
+  const router = useRouter();
+
 
   const supabase = useSupabaseClient();
   const [comment, setComment] = useState(null);
@@ -18,9 +20,7 @@ const CreateCommentComponent = ({ mealId }) => {
     note: 0,
   });
 
-  const router = useRouter();
 
-  // Ajoutez cette fonction pour mettre à jour la note dans le formulaire
   const handleRatingChange = (newRating) => {
     setFormData({ ...formData, note: newRating });
   };
@@ -47,18 +47,17 @@ const CreateCommentComponent = ({ mealId }) => {
         throw new Error(error.message);
       }
 
-      setComment('Comment inserted successfully!');
+
       setFormData({
         comment: '',
         commentCreator: mailUser,
         note: 0,
       });
 
-      // Redirigez l'utilisateur vers la page actuelle pour rafraîchir
-      router.replace(router.asPath);
     } catch (error) {
       console.error('Error inserting comment:', error.message);
     }
+
   };
 
   return (
@@ -70,7 +69,7 @@ const CreateCommentComponent = ({ mealId }) => {
             <RatingComponent
               rating={formData.note}
               readOnly={false}
-              onChange={handleRatingChange} // Passer la fonction de rappel onChange
+              onChange={handleRatingChange}
             />
           </label>
           <label>
@@ -104,6 +103,8 @@ const CreateCommentComponent = ({ mealId }) => {
           aria-label="Overflow below the drawer dialog"
           className="fixed inset-0 bg-black/80 flex items-center justify-center"
           onClick={() => setComment(null)}
+
+
           role="dialog"
         >
           <div
@@ -118,4 +119,4 @@ const CreateCommentComponent = ({ mealId }) => {
   );
 };
 
-export default CreateCommentComponent;
+export default NewComment;

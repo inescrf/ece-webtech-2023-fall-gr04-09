@@ -21,7 +21,7 @@ const fetchRandomMeal = async () => {
   return fetchDataFromApi('https://www.themealdb.com/api/json/v1/1/random.php');
 };
 
-const RandomMealComponent = () => {
+const idAPIRandom = () => {
   const [mealData, setMealData] = useState(null);
 
   useEffect(() => {
@@ -55,4 +55,4 @@ const RandomMealComponent = () => {
   );
 };
 
-export default RandomMealComponent;
+export default idAPIRandom;

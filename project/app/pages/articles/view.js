@@ -48,19 +48,19 @@ export default function Articles() {
   };
 
   useEffect(() => {
-    //load article
+    // load article
     (async () => {
       if (user) {
         let { data, error } = await supabase
           .from('articles')
           .select(`*`)
           .eq('emailCreator', user.email);
-
+  
         setArticles(data);
         console.log('Supabase query result:', { data, error });
       }
     })();
-  }, [user]);
+  }, [user, supabase]); 
 
   return (
     <Layout
