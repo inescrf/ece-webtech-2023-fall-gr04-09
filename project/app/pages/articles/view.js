@@ -8,7 +8,7 @@ import Layout from '../../components/Layout.js'
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const supabase = useSupabaseClient();
-  const { profile } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [deleteConfirmation, setDeleteConfirmation] = useState(null);
 
   const handleDeleteClick = async (article) => {
@@ -34,7 +34,7 @@ export default function Articles() {
         .eq('idMeal', confirmation.idMeal);
 
       if (commentError) {
-        console.error('Error deleting article:', commentData.message);
+        console.error('Error deleting article:', commentError.message);
         return;
       }
 
@@ -50,17 +50,17 @@ export default function Articles() {
   useEffect(() => {
     //load article
     (async () => {
-      if (profile) {
+      if (user) {
         let { data, error } = await supabase
           .from('articles')
           .select(`*`)
-          .eq('emailCreator', profile.email);
+          .eq('emailCreator', user.email);
 
         setArticles(data);
         console.log('Supabase query result:', { data, error });
       }
     })();
-  }, [profile]);
+  }, [user]);
 
   return (
     <Layout
@@ -70,7 +70,7 @@ export default function Articles() {
       <div className="flex justify-between items-center mb-4">
         <h1 className="wt-title">My Articles</h1>
         <Link href="/profile">
-          Back to Profile
+          Back to user
         </Link>
       </div>
       <div className="not-prose -my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -104,7 +104,7 @@ export default function Articles() {
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-slate-500">{article.strArea}</td>
                     <td>
                       <Link
-                        href={`/profile/modify-my-article?strMeal=${encodeURIComponent(article.strMeal)}`}
+                        href={`/articles/edit?strMeal=${encodeURIComponent(article.strMeal)}`}
                       >
                         Modify
                       </Link>
