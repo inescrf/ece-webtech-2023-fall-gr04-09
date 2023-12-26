@@ -5,18 +5,15 @@ import Rating from './Rating';
 import GravatarComponent from '../GravatarComponent';
 import { useRouter } from 'next/router';
 
-
-
 const Comment = ({ mealId }) => {
   const supabase = useSupabaseClient();
   const [comments, setComments] = useState([]);
   const { user } = useContext(UserContext);
-  
+
   const [editingCommentId, setEditingCommentId] = useState(null);
   const [editCommentText, setEditCommentText] = useState('');
 
   const router = useRouter();
-
 
   const handleEditClick = (commentId, initialText) => {
     setEditingCommentId(commentId);
@@ -119,7 +116,7 @@ const Comment = ({ mealId }) => {
 
   return (
     <div className="mt-8">
-      <h2 className="text-2xl font-bold mb-4">Comments</h2>
+      <h2 className="text-2xl font-bold mb-4 text-green-1 text-center">Comments</h2>
       {editingCommentId !== null ? (
         <div>
           <textarea
@@ -144,8 +141,9 @@ const Comment = ({ mealId }) => {
         </div>
       ) : (
         <div>
+          <br />
           {comments.length === 0 ? (
-            <p>No comments for the moment</p>
+            <p className='text-center'>No comments for the moment</p>
           ) : (
             <ul className="space-y-4">
               {comments.map((comment) => (
@@ -181,7 +179,6 @@ const Comment = ({ mealId }) => {
                       </div>
                     )}
                   </div>
-
                 </li>
               ))}
             </ul>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { createClient } from '@supabase/supabase-js';
 import GravatarComponent from '../GravatarComponent';
+import Comment from '../../components/comments/Comment';
+import NewComment from '../../components/comments/NewComment'; // Importer le composant NewComment
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -76,18 +78,18 @@ const IdMealComponent = ({ mealId }) => {
   };
 
   return (
-    <div className="max-w-full mx-auto p-6 space-y-6">
-      <h1 className="text-3xl font-extrabold mb-4 text-green-1 text-center">
+    <div className="mx-auto p-6 space-y-6 text-center">
+      <h1 className="text-3xl font-extrabold mb-4 text-green-1">
         {mealData && mealData.strMeal}
       </h1>
-      
-      <div className="flex flex-col lg:flex-row lg:space-x-4">
+
+      <div className="flex flex-col lg:flex-row lg:space-x-4 items-center justify-center">
         <div className="lg:w-1/2">
-          <img className="object-cover mb-4 rounded" src={mealData && mealData.strMealThumb} alt={mealData && mealData.strMeal} />
+          <img className="object-cover mb-2 rounded border border-black max-w-full h-auto custom-small-image" src={mealData && mealData.strMealThumb} alt={mealData && mealData.strMeal} />
         </div>
 
         <div className="lg:w-1/2 bg-green-2 rounded p-4">
-          <h3 className="text-xl font-semibold mb-2">Ingredients:</h3>
+          <h3 className="text-xl font-semibold mb-2 text-green-hover">Ingredients:</h3>
           <ul className="list-disc ml-4">
             {Array.from({ length: 20 }, (_, index) => index + 1).map((index) => {
               const ingredient = mealData && mealData[`strIngredient${index}`];
@@ -95,9 +97,9 @@ const IdMealComponent = ({ mealId }) => {
 
               if (ingredient && measure) {
                 return (
-                  <li key={index} className="text-lg mb-1">
+                  <p key={index} className="text-lg mb-1">
                     {ingredient} - {measure}
-                  </li>
+                  </p>
                 );
               } else {
                 return null;
@@ -107,28 +109,20 @@ const IdMealComponent = ({ mealId }) => {
         </div>
       </div>
 
-      <div className="text-center">
-        <button
-          className="bg-camel text-white px-4 py-2 rounded mb-4"
-          onClick={handleToggleInstructions}
-        >
-          {showInstructions ? 'Hide Instructions' : 'See Instructions'}
-        </button>
-        <p className={`text-lg ${showInstructions ? 'text-green-hover' : 'text-green-2'}`}>
-          Instructions: {showInstructions ? mealData && mealData.strInstructions : '   '}
-        </p>
-      </div>
+      <button
+        className="bg-camel text-white px-4 py-2 rounded"
+        onClick={handleToggleInstructions}
+      >
+        {showInstructions ? 'Hide Instructions' : 'See Instructions'}
+      </button>
+      <p className={`text-lg ${showInstructions ? 'text-green-hover' : 'text-green-2'}`}>
+         {showInstructions ? mealData && mealData.strInstructions : '   '}
+      </p>
 
-      <div className="text-center">
-        <p className="text-lg text-blue-500">
-          Youtube video: <a href={mealData && mealData.strYoutube} target="_blank" rel="noopener noreferrer">{mealData && mealData.strYoutube}</a>
-        </p>
+      <div className="text-blue-500">
+        Youtube video: <a href={mealData && mealData.strYoutube} target="_blank" rel="noopener noreferrer">{mealData && mealData.strYoutube}</a>
       </div>
-
-      {/* Comments section */}
-      <h2 className="text-3xl font-extrabold mb-4 text-green-1 text-center">Comments</h2>
-      {/* Comment Form */}
-      <h2 className="text-3xl font-extrabold mb-4 text-green-1 text-center">Leave a Comment Here</h2>
+     
     </div>
   );
 };
