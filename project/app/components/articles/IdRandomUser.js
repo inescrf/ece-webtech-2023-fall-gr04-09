@@ -6,8 +6,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-
-const idRandomUser = () => {
+const IdRandomUser = () => {
   const [mealData, setMealData] = useState(null);
 
   useEffect(() => {
@@ -16,8 +15,8 @@ const idRandomUser = () => {
       try {
         const { data, error } = await supabase
           .from('random_articles')
-          .select('*')
-          .limit(1)
+          .select('strMeal, emailCreator, strMealThumb')
+          .limit(1);
         if (error) {
           console.error(error);
           return;
@@ -35,13 +34,11 @@ const idRandomUser = () => {
   return (
     <div>
       {mealData && (
-        <div>
-          <h2>-------------------</h2>
-          <p>Meal name : {mealData.strMeal}</p>
-          <p>Meal type : {mealData.strCategory}</p>
-          <p>Meal Creator : {mealData.emailCreator}</p>
+        <div className="p-4 rounded-lg">
+          <h2 className="text-xl text-green-hover font-bold mb-2">{mealData.strMeal}</h2>
+          <p className="text-camel mb-2">User: {mealData.emailCreator}</p>
           <Link href={`/articles/${mealData.idMeal}`}>
-            <img src={mealData.strMealThumb} alt={mealData.strMeal} />
+            <img src={mealData.strMealThumb} alt={mealData.strMeal} className="w-full h-40 object-cover mb-2 rounded-t-lg" />
           </Link>
         </div>
       )}
@@ -49,4 +46,4 @@ const idRandomUser = () => {
   );
 };
 
-export default idRandomUser;
+export default IdRandomUser;

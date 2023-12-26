@@ -8,8 +8,8 @@ const CategoryPage = () => {
 
   return (
     <Layout>
-      <div>
-        <h1>Meals in category: {category}</h1>
+      <div className="p-4 bg-beige-1">
+        <h1 className="text-2xl font-bold text-camel mb-4">Meals in category: {category}</h1>
         <CategoryMealComponent mealCat={category} />
       </div>
     </Layout>

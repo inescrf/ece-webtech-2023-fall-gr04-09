@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
 import UserContext from '../components/UserContext';
-import Layout from '../components/Layout.js';
+import Layout from '../components/Layout';
 import GravatarComponent from '../components/GravatarComponent';
 import Link from 'next/link';
+import { FaPen, FaBook, FaUserEdit, FaSignOutAlt } from 'react-icons/fa';
 
 export default function Page() {
   const router = useRouter();
@@ -20,59 +21,57 @@ export default function Page() {
     logout();
     router.push('/');
   };
+
   if (user == null || user.email == null) {
     return null;
   }
 
   return (
     <Layout>
-      <div className="flex justify-center items-center flex-col">
-        <h2 className="text-3xl font-bold mb-4">Your profile :)</h2>
+      <div className="flex flex-col w-full h-full"> {/* Ajustement pour occuper toute la hauteur et largeur */}
+        <h2 className="text-3xl font-extrabold mb-4 text-green-1 text-center">Your profile page</h2>
+        <p><br /></p>
+        <p><br /></p>
+        <div className="flex flex-row w-full h-full"> {/* Ajustement pour occuper toute la hauteur et largeur */}
+        
+          {/* Colonne de gauche pour les informations de l'utilisateur */}
+          <div className="flex flex-col items-center w-1/2 bg-beige-1 p-4 h-full">
+            <GravatarComponent email={user.email} size={200} />
+            <div className="text-lg text-camel my-4">
+              <p>
+                <span className="font-semibold">Username:</span> {user.user_metadata?.user_name}
+              </p>
+              <p>
+                <span className="font-semibold">Email:</span> {user.email}
+              </p>
+              <button
+                className="rounded px-4 py-3 text-white bg-green-1 hover:bg-green-2 flex items-center mt-4"
+                onClick={onClickLogout}
+              >
+                <FaSignOutAlt className="mr-2" /> Sign out
+              </button>
+            </div>
+          </div>
 
-        <GravatarComponent email={user.email} size={250} />
 
-        <div className="border-t-2 border-gray-200 my-4"></div>
-
-        <div className="text-lg">
-          <p>
-            <span className="font-semibold">User Name:</span> {user.user_metadata?.user_name}
-          </p>
-          <p>
-            <span className="font-semibold">Email:</span> {user.email}
-          </p>
-          <p>
-            <button
-              className="rounded px-3 py-2 text-white bg-slate-500 hover:bg-blue-500"
-              onClick={onClickLogout}
-            >
-              Sign out
-            </button>
-          </p>
-        </div>
-
-        <div className="border-t-2 border-gray-200 my-4"></div>
-
-        <div className="space-y-4 space-x-4">
-          <Link
-            href="/articles/new"
-            className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50"
-          >
-            Create an Article
-          </Link>
-
-          <Link
-            href="/articles/view"
-            className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50"
-          >
-            My Articles
-          </Link>
-
-          <Link
-            href="/profile/edit"
-            className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50"
-          >
-            Edit profile
-          </Link>
+          {/* Colonne de droite pour les boutons d'action */}
+          <div className="flex flex-col items-center w-1/2 space-y-6 self-center">
+            <Link href="/articles/new" passHref>
+              <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg">
+                <FaPen className="mr-3" /> Create an Article
+              </span>
+            </Link>
+            <Link href="/articles/view" passHref>
+              <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg">
+                <FaBook className="mr-3" /> My Articles
+              </span>
+            </Link>
+            <Link href="/profile/edit" passHref>
+              <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg">
+                <FaUserEdit className="mr-3" /> Edit profile
+              </span>
+            </Link>
+          </div>
         </div>
       </div>
     </Layout>
