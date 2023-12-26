@@ -1,33 +1,29 @@
 import React from 'react';
-import Layout from '../components/Layout.js'
+import Layout from '../components/Layout.js';
 import RandomMealComponent from '../components/articles/idAPIRandom.js';
 import UserRandomMealComponent from '../components/articles/IdRandomUser.js';
 
 const RepasLayout = () => {
   return (
     <Layout>
-      <div className="flex justify-center items-stretch">
-        {/* Première colonne */}
-        <div className="flex-grow p-4 h-full">
-          <h2 className="text-xl font-bold mb-4">Colonne 1</h2>
+      <div className="text-center">
+        <h1 className="text-3xl font-extrabold mb-4 text-green-1">Random Meals Idea</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {[...Array(4)].map((_, index) => (
-            <RandomMealComponent key={index} />
+            <div key={index} className="p-4 bg-green-2 shadow-lg rounded-lg">
+              <RandomMealComponent key={index} />
+            </div>
           ))}
         </div>
+      </div>
 
-        {/* Deuxième colonne */}
-        <div className="flex-grow p-4 h-full">
-          <h2 className="text-xl font-bold mb-4">Colonne 2</h2>
+      <div className="mt-8 text-center">
+        <h2 className="text-3xl font-bold mb-4 text-camel">User Meals</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {[...Array(4)].map((_, index) => (
-            <RandomMealComponent key={index} />
-          ))}
-        </div>
-
-        {/* Article de la communauté */}
-        <div className="flex-grow p-4 h-full">
-          <h2 className="text-xl font-bold mb-4">User meals</h2>
-          {[...Array(4)].map((_, index) => (
-            <UserRandomMealComponent key={index} />
+            <div key={index} className="p-4 bg-beige-1 shadow-lg rounded-lg">
+              <UserRandomMealComponent key={index} />
+            </div>
           ))}
         </div>
       </div>

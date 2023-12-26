@@ -1,15 +1,35 @@
-import { useContext, useState } from 'react'
-import { useSupabaseClient } from '@supabase/auth-helpers-react'
-import Link from 'next/link'
-import Layout from '../../components/Layout.js'
-import UserContext from '../../components/UserContext.js';
+import { useEffect, useContext, useState } from 'react';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import Link from 'next/link';
+import Layout from '../../components/Layout';
+import UserContext from '../../components/UserContext';
+
 export default function CreateArticle() {
   const { profile } = useContext(UserContext);
   const supabase = useSupabaseClient();
   const [message, setMessage] = useState(null);
-  const categoryOptions = ['Beef', 'Chicken', 'Dessert', 'Lamb', 'Miscellaneous', 'Pasta', 'Pork', 'Seafood', 'Side', 'Starter', 'Vegan', 'Vegetarian', 'Breakfast', 'Goat'];
+  const [ingredientCount, setIngredientCount] = useState(5);
+  const [categories, setCategories] = useState([]);
   const areaOptions = ["American", "British", "Canadian", "Chinese", "Croatian", "Dutch", "Egyptian", "Filipino", "French", "Greek", "Indian", "Irish", "Italian", "Jamaican", "Japanese", "Kenyan", "Malaysian", "Mexican", "Moroccan", "Polish", "Portuguese", "Russian", "Spanish", "Thai", "Tunisian", "Turkish", "Unknown", "Vietnamese",
   ];
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      // Remplacez cette URL par l'URL de votre API si différente
+      const url = 'https://www.themealdb.com/api/json/v1/1/categories.php';
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setCategories(data.categories);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des catégories:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+
 
   const [formData, setFormData] = useState({
     strMeal: '',
@@ -19,306 +39,92 @@ export default function CreateArticle() {
     strMealThumb: '',
     strTags: '',
     strYoutube: '',
-    strIngredient1: '',
-    strIngredient2: '',
-    strIngredient3: '',
-    strIngredient4: '',
-    strIngredient5: '',
-    strIngredient6: '',
-    strIngredient7: '',
-    strIngredient8: '',
-    strIngredient9: '',
-    strIngredient10: '',
-    strIngredient11: '',
-    strIngredient12: '',
-    strIngredient13: '',
-    strIngredient14: '',
-    strIngredient15: '',
-    strIngredient16: '',
-    strIngredient17: '',
-    strIngredient18: '',
-    strIngredient19: '',
-    strIngredient20: '',
-    strMeasure1: '',
-    strMeasure2: '',
-    strMeasure3: '',
-    strMeasure4: '',
-    strMeasure5: '',
-    strMeasure6: '',
-    strMeasure7: '',
-    strMeasure8: '',
-    strMeasure9: '',
-    strMeasure10: '',
-    strMeasure11: '',
-    strMeasure12: '',
-    strMeasure13: '',
-    strMeasure14: '',
-    strMeasure15: '',
-    strMeasure16: '',
-    strMeasure17: '',
-    strMeasure18: '',
-    strMeasure19: '',
-    strMeasure20: '',
-
+    // Initialisation des ingrédients et mesures
+    ...Object.fromEntries([...Array(20).keys()].map(i => [`strIngredient${i + 1}`, ''])),
+    ...Object.fromEntries([...Array(20).keys()].map(i => [`strMeasure${i + 1}`, ''])),
   });
-  const fieldNames = [
-    'Meal name',
-    'Category',
-    'Area',
-    'Instructions',
-    'Meal Thumb',
-    'Meal Tags',
-    'Youtube video link',
-    'Ingredient 1',
-    'Ingredient 2',
-    'Ingredient 3',
-    'Ingredient 4',
-    'Ingredient 5',
-    'Ingredient 6',
-    'Ingredient 7',
-    'Ingredient 8',
-    'Ingredient 9',
-    'Ingredient 10',
-    'Ingredient 11',
-    'Ingredient 12',
-    'Ingredient 13',
-    'Ingredient 14',
-    'Ingredient 15',
-    'Ingredient 16',
-    'Ingredient 17',
-    'Ingredient 18',
-    'Ingredient 19',
-    'Ingredient 20',
-    'Measure 1',
-    'Measure 2',
-    'Measure 3',
-    'Measure 4',
-    'Measure 5',
-    'Measure 6',
-    'Measure 7',
-    'Measure 8',
-    'Measure 9',
-    'Measure 10',
-    'Measure 11',
-    'Measure 12',
-    'Measure 13',
-    'Measure 14',
-    'Measure 15',
-    'Measure 16',
-    'Measure 17',
-    'Measure 18',
-    'Measure 19',
-    'Measure 20',
 
-  ];
+  const addIngredientField = () => {
+    if (ingredientCount < 20) {
+      setIngredientCount(ingredientCount + 1);
+    }
+  };
 
   const onSubmit = async function (e) {
     e.preventDefault();
-
+  
+    // Check if profile is defined before accessing email
+    if (!profile) {
+      // Handle the case where profile is undefined, e.g., redirect to login or display an error message
+      console.error("User profile is undefined");
+      // You can add further error handling or redirection logic here
+      return;
+    }
+  
     const userEmail = profile.email;
-
-    // Extracting relevant fields from formData
-    const {
-      strMeal,
-      strCategory,
-      strArea,
-      strInstructions,
-      strMealThumb,
-      strTags,
-      strYoutube,
-      strIngredient1,
-      strIngredient2,
-      strIngredient3,
-      strIngredient4,
-      strIngredient5,
-      strIngredient6,
-      strIngredient7,
-      strIngredient8,
-      strIngredient9,
-      strIngredient10,
-      strIngredient11,
-      strIngredient12,
-      strIngredient13,
-      strIngredient14,
-      strIngredient15,
-      strIngredient16,
-      strIngredient17,
-      strIngredient18,
-      strIngredient19,
-      strIngredient20,
-      strMeasure1,
-      strMeasure2,
-      strMeasure3,
-      strMeasure4,
-      strMeasure5,
-      strMeasure6,
-      strMeasure7,
-      strMeasure8,
-      strMeasure9,
-      strMeasure10,
-      strMeasure11,
-      strMeasure12,
-      strMeasure13,
-      strMeasure14,
-      strMeasure15,
-      strMeasure16,
-      strMeasure17,
-      strMeasure18,
-      strMeasure19,
-      strMeasure20,
-
-    } = formData;
-
-    // Insert article record into the article database
+    
     const { data, error } = await supabase
       .from('articles')
-      .upsert([
-        {
+      .insert([{ ...formData, emailCreator: profile.email }]);
 
-          strMeal,
-          strCategory,
-          strArea,
-          strInstructions,
-          strMealThumb,
-          strTags,
-          strYoutube,
-          strIngredient1,
-          strIngredient2,
-          strIngredient3,
-          strIngredient4,
-          strIngredient5,
-          strIngredient6,
-          strIngredient7,
-          strIngredient8,
-          strIngredient9,
-          strIngredient10,
-          strIngredient11,
-          strIngredient12,
-          strIngredient13,
-          strIngredient14,
-          strIngredient15,
-          strIngredient16,
-          strIngredient17,
-          strIngredient18,
-          strIngredient19,
-          strIngredient20,
-          strMeasure1,
-          strMeasure2,
-          strMeasure3,
-          strMeasure4,
-          strMeasure5,
-          strMeasure6,
-          strMeasure7,
-          strMeasure8,
-          strMeasure9,
-          strMeasure10,
-          strMeasure11,
-          strMeasure12,
-          strMeasure13,
-          strMeasure14,
-          strMeasure15,
-          strMeasure16,
-          strMeasure17,
-          strMeasure18,
-          strMeasure19,
-          strMeasure20,
-          emailCreator: userEmail
-
-        },
-      ]);
-
-    setMessage('Article record inserted successfully!');
-
-    setFormData({
-      // Resetting form fields after submission
-      strMeal: '',
-      strCategory: '',
-      strArea: '',
-      strInstructions: '',
-      strMealThumb: '',
-      strTags: '',
-      strYoutube: '',
-      strIngredient1: '',
-      strIngredient2: '',
-      strIngredient3: '',
-      strIngredient4: '',
-      strIngredient5: '',
-      strIngredient6: '',
-      strIngredient7: '',
-      strIngredient8: '',
-      strIngredient9: '',
-      strIngredient10: '',
-      strIngredient11: '',
-      strIngredient12: '',
-      strIngredient13: '',
-      strIngredient14: '',
-      strIngredient15: '',
-      strIngredient16: '',
-      strIngredient17: '',
-      strIngredient18: '',
-      strIngredient19: '',
-      strIngredient20: '',
-      strMeasure1: '',
-      strMeasure2: '',
-      strMeasure3: '',
-      strMeasure4: '',
-      strMeasure5: '',
-      strMeasure6: '',
-      strMeasure7: '',
-      strMeasure8: '',
-      strMeasure9: '',
-      strMeasure10: '',
-      strMeasure11: '',
-      strMeasure12: '',
-      strMeasure13: '',
-      strMeasure14: '',
-      strMeasure15: '',
-      strMeasure16: '',
-      strMeasure17: '',
-      strMeasure18: '',
-      strMeasure19: '',
-      strMeasure20: '',
-
-    });
+    if (error) {
+      setMessage('An error occurred: ' + error.message);
+    } else {
+      setMessage('Article created successfully!');
+      setFormData({
+        strMeal: '',
+        strCategory: '',
+        strArea: '',
+        strInstructions: '',
+        strMealThumb: '',
+        strTags: '',
+        strYoutube: '',
+        ...Object.fromEntries([...Array(20).keys()].map(i => [`strIngredient${i + 1}`, ''])),
+        ...Object.fromEntries([...Array(20).keys()].map(i => [`strMeasure${i + 1}`, ''])),
+      });
+    }
   };
 
   return (
     <Layout title="create-article" description="Generated by create next app">
       <div className="flex justify-between items-center mb-4">
-        <Link href="/profile">
-          Back to Profile
+        <Link href="/profile" passHref>
+        <div className="flex justify-center mt-4">
+            <Link href="/profile">
+              <span className="text-white hover:text-beige-2 cursor-pointer bg-camel rounded px-4 py-3">Back to Profil page</span>
+            </Link>
+          </div>
         </Link>
       </div>
-      <h1 className="wt-title">Article Creation</h1>
+      <h1 className="text-3xl font-extrabold mb-4 text-green-1 text-center">Create an article</h1>
 
+      <form className="grid gap-3" onSubmit={onSubmit}>
+  <div>
+    <label>
+      <span className="block font-bold mb-1">Meal name</span>
+      <input
+        type="text"
+        name="strMeal"
+        value={formData.strMeal}
+        onChange={(e) => setFormData({ ...formData, strMeal: e.target.value })}
+        className="border border-gray-300 rounded px-2 py-1 w-full"
+      />
+    </label>
+  </div>
 
-
-
-      <form className="[&_span]:block grid gap-3" onSubmit={onSubmit}>
-        <div>
-          <label>
-            <span className="block font-bold mb-1">Meal name</span>
-            <input
-              type="text"
-              name="strMeal"
-              value={formData.strMeal}
-              onChange={(e) => setFormData({ ...formData, strMeal: e.target.value })}
-            />
-          </label>
-        </div>
-
-        <div>
+  <div>
           <label>
             <span className="block font-bold mb-1">Category</span>
             <select
               name="strCategory"
               value={formData.strCategory}
               onChange={(e) => setFormData({ ...formData, strCategory: e.target.value })}
+              className="border border-gray-300 rounded px-2 py-1 w-full"
             >
               <option value=""></option>
-              {categoryOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
+              {categories.map((category) => (
+                <option key={category.idCategory} value={category.strCategory}>
+                  {category.strCategory}
                 </option>
               ))}
             </select>
@@ -332,6 +138,7 @@ export default function CreateArticle() {
               name="strArea"
               value={formData.strArea}
               onChange={(e) => setFormData({ ...formData, strArea: e.target.value })}
+              className="border border-gray-300 rounded px-2 py-1 w-full"
             >
               <option value=""></option>
               {areaOptions.map((option) => (
@@ -343,164 +150,114 @@ export default function CreateArticle() {
           </label>
         </div>
 
-        <div>
-          <label>
-            <span className="block font-bold mb-1">Instructions</span>
-            <textarea
-              name="strInstructions"
-              value={formData.strInstructions}
-              onChange={(e) => setFormData({ ...formData, strInstructions: e.target.value })}
-              rows={6}
-            />
-          </label>
-        </div>
+  <div>
+    <label>
+      <span className="block font-bold mb-1">Instructions</span>
+      <textarea
+        name="strInstructions"
+        value={formData.strInstructions}
+        onChange={(e) => setFormData({ ...formData, strInstructions: e.target.value })}
+        rows={6}
+        className="border border-gray-300 rounded px-2 py-1 w-full"
+      />
+    </label>
+  </div>
 
-        <div>
+  <div>
           <label>
-            <span className="block font-bold mb-1">Meal Thumb</span>
+            <span className="block font-bold mb-1">Meal Thumb (Image URL)</span>
             <input
               type="text"
               name="strMealThumb"
               value={formData.strMealThumb}
               onChange={(e) => setFormData({ ...formData, strMealThumb: e.target.value })}
+              className="border border-gray-300 rounded px-2 py-1 w-full"
+              placeholder="Enter image URL"
             />
           </label>
         </div>
 
-        <div>
-          <label>
-            <span className="block font-bold mb-1">Meal Tags</span>
-            <input
-              type="text"
-              name="strTags"
-              value={formData.strTags}
-              onChange={(e) => setFormData({ ...formData, strTags: e.target.value })}
-            />
-          </label>
-        </div>
+  <div>
+    <label>
+      <span className="block font-bold mb-1">Meal Tags</span>
+      <input
+        type="text"
+        name="strTags"
+        value={formData.strTags}
+        onChange={(e) => setFormData({ ...formData, strTags: e.target.value })}
+        className="border border-gray-300 rounded px-2 py-1 w-full"
+      />
+    </label>
+  </div>
 
-        <div>
-          <label>
-            <span className="block font-bold mb-1">Youtube Video Link</span>
-            <input
-              type="text"
-              name="strYoutube"
-              value={formData.strYoutube}
-              onChange={(e) => setFormData({ ...formData, strYoutube: e.target.value })}
-            />
-          </label>
-        </div>
+  <div>
+    <label>
+      <span className="block font-bold mb-1">Youtube Video Link</span>
+      <input
+        type="text"
+        name="strYoutube"
+        value={formData.strYoutube}
+        onChange={(e) => setFormData({ ...formData, strYoutube: e.target.value })}
+        className="border border-gray-300 rounded px-2 py-1 w-full"
+      />
+    </label>
+  </div>
 
-        {[...Array(20).keys()].map((index) => (
-          <div key={index}>
-            <label>
-              <span className="block font-bold mb-1">{`Ingredient ${index + 1}`}</span>
-              <input
-                type="text"
-                name={`strIngredient${index + 1}`}
-                value={formData[`strIngredient${index + 1}`]}
-                onChange={(e) => setFormData({ ...formData, [`strIngredient${index + 1}`]: e.target.value })}
-              />
-            </label>
-          </div>
-        ))}
+  {/* Génération dynamique des champs pour les ingrédients et mesures */}
+  {[...Array(ingredientCount).keys()].map((index) => (
+    <div key={index} className="grid grid-cols-2 gap-2">
+      {/* Champ d'ingrédient */}
+      <label className="block">
+        <span className="font-bold mb-1">Ingredient {index + 1}</span>
+        <input
+          type="text"
+          name={`strIngredient${index + 1}`}
+          value={formData[`strIngredient${index + 1}`]}
+          onChange={(e) => setFormData({ ...formData, [`strIngredient${index + 1}`]: e.target.value })}
+          className="border border-gray-300 rounded px-2 py-1 w-full"
+        />
+      </label>
+      {/* Champ de mesure */}
+      <label className="block">
+        <span className="font-bold mb-1">Measure {index + 1}</span>
+        <input
+          type="text"
+          name={`strMeasure${index + 1}`}
+          value={formData[`strMeasure${index + 1}`]}
+          onChange={(e) => setFormData({ ...formData, [`strMeasure${index + 1}`]: e.target.value })}
+          className="border border-gray-300 rounded px-2 py-1 w-full"
+        />
+      </label>
+    </div>
+  ))}
 
-        {[...Array(20).keys()].map((index) => (
-          <div key={index}>
-            <label>
-              <span className="block font-bold mb-1">{`Measure ${index + 1}`}</span>
-              <input
-                type="text"
-                name={`strMeasure${index + 1}`}
-                value={formData[`strMeasure${index + 1}`]}
-                onChange={(e) => setFormData({ ...formData, [`strMeasure${index + 1}`]: e.target.value })}
-                style={{ marginLeft: '10px' }}
-              />
-            </label>
-          </div>
-        ))}
+  {ingredientCount < 20 && (
+    <button
+      type="button"
+      className="rounded py-1 px-3 text-white bg-green-1 hover:bg-green-2"
+      onClick={addIngredientField}
+    >
+      Add an Ingredient
+    </button>
+  )}
 
-        <div>
-          <button
-            className="rounded py-1 px-3 text-white bg-slate-500 hover:bg-blue-500"
-            type="submit"
-          >
-            Create Article
-          </button>
-        </div>
-
-        <button
-          className="rounded py-1 px-3 text-white bg-red-500 hover:bg-red-700"
-          type="button"
-          onClick={() => setFormData({
-            strMeal: '',
-            strCategory: '',
-            strArea: '',
-            strInstructions: '',
-            strMealThumb: '',
-            strTags: '',
-            strYoutube: '',
-            strIngredient1: '',
-            strIngredient2: '',
-            strIngredient3: '',
-            strIngredient4: '',
-            strIngredient5: '',
-            strIngredient6: '',
-            strIngredient7: '',
-            strIngredient8: '',
-            strIngredient9: '',
-            strIngredient10: '',
-            strIngredient11: '',
-            strIngredient12: '',
-            strIngredient13: '',
-            strIngredient14: '',
-            strIngredient15: '',
-            strIngredient16: '',
-            strIngredient17: '',
-            strIngredient18: '',
-            strIngredient19: '',
-            strIngredient20: '',
-            strMeasure1: '',
-            strMeasure2: '',
-            strMeasure3: '',
-            strMeasure4: '',
-            strMeasure5: '',
-            strMeasure6: '',
-            strMeasure7: '',
-            strMeasure8: '',
-            strMeasure9: '',
-            strMeasure10: '',
-            strMeasure11: '',
-            strMeasure12: '',
-            strMeasure13: '',
-            strMeasure14: '',
-            strMeasure15: '',
-            strMeasure16: '',
-            strMeasure17: '',
-            strMeasure18: '',
-            strMeasure19: '',
-            strMeasure20: '',
-          })}
-        >
-          Cancel
-        </button>
-
-      </form>
-
-
-
+  <button
+    className="rounded py-1 px-3 text-white bg-camel hover:bg-beige-2"
+    type="submit"
+  >
+    Create Article
+  </button>
+</form>
 
 
       {message && (
         <div
-          aria-label="Overlow below the drawer dialog"
           className="fixed inset-0 bg-black/80 flex items-center justify-center"
           onClick={() => setMessage(null)}
           role="dialog"
         >
           <div
-            aria-label="Alert pane"
-            className="max-h-[90vh] max-w-[95vw] overflow-auto p-4 prose bg-white"
+            className="max-h-[90vh] max-w-[95vw] overflow-auto p-4 bg-white"
           >
             {message}
           </div>
