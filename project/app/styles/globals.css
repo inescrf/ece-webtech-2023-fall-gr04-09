@@ -7,3 +7,8 @@
 .wt-title {
   @apply text-3xl font-bold underline mb-10;
 }
+
+.custom-small-image {
+  max-width: 500px; /* Vous pouvez ajuster cette valeur en fonction de la taille souhaitée */
+  max-height: 450px; /* Vous pouvez ajuster cette valeur en fonction de la taille souhaitée */
+}

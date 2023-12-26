@@ -10,16 +10,13 @@ const NewComment = ({ mealId }) => {
   const mailUser = user ? user.email : '';
   const router = useRouter();
 
-
   const supabase = useSupabaseClient();
-  const [comment, setComment] = useState(null);
   const [formData, setFormData] = useState({
     idMeal: '',
     comment: '',
     commentCreator: mailUser,
     note: 0,
   });
-
 
   const handleRatingChange = (newRating) => {
     setFormData({ ...formData, note: newRating });
@@ -47,25 +44,22 @@ const NewComment = ({ mealId }) => {
         throw new Error(error.message);
       }
 
-
       setFormData({
         comment: '',
         commentCreator: mailUser,
         note: 0,
       });
-
     } catch (error) {
       console.error('Error inserting comment:', error.message);
     }
-
   };
 
   return (
     <div>
-      <form className="grid gap-3" onSubmit={onSubmit}>
-        <h2 className="text-2xl font-bold mb-4">Leave a comment here</h2>
+      <form className="grid gap-3">
+        <h2 className="text-2xl font-bold mb-4 text-green-1 text-center">Leave a comment here</h2>
         <div>
-          <label>
+          <label className="text-center">
             <RatingComponent
               rating={formData.note}
               readOnly={false}
@@ -73,48 +67,33 @@ const NewComment = ({ mealId }) => {
             />
           </label>
           <label>
-            <span>Your Comment</span>
+            <span className="text-green-hover">Your Comment</span>
             <textarea
               name="comment"
               value={formData.comment}
               onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
+              className="w-full p-2 border rounded text-sm" 
             />
           </label>
           <label>
-            <span>Your email</span>
+            <span className="text-green-hover">Your Email</span>
             <input
               type="text"
               value={formData.commentCreator}
               onChange={(e) => setFormData({ ...formData, commentCreator: e.target.value })}
+              className="w-full p-2 border rounded text-sm" 
             />
           </label>
         </div>
-        <div>
+        <div className="text-center">
           <button
             type="submit"
-            className="rounded py-1 px-3 text-white bg-slate-500 hover:bg-blue-500"
+            className="rounded py-1 px-3 text-white bg-camel hover:bg-green-hover"
           >
             Send
           </button>
         </div>
       </form>
-      {comment && (
-        <div
-          aria-label="Overflow below the drawer dialog"
-          className="fixed inset-0 bg-black/80 flex items-center justify-center"
-          onClick={() => setComment(null)}
-
-
-          role="dialog"
-        >
-          <div
-            aria-label="Alert pane"
-            className="max-h-[90vh] max-w-[95vw] overflow-auto p-4 prose bg-white"
-          >
-            {comment}
-          </div>
-        </div>
-      )}
     </div>
   );
 };
