@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
-import IdMealComponent from '../../components/articles/idAPI';
+import IdMealComponent from '../../components/articles/IdAPI';
 import NewComment from '../../components/comments/NewComment';
 import Comment from '../../components/comments/Comment';
 

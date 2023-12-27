@@ -22,7 +22,7 @@ const fetchRandomMeal = async () => {
   return fetchDataFromApi('https://www.themealdb.com/api/json/v1/1/random.php');
 };
 
-const IdAPIRandom = () => { // Renommé pour commencer par une majuscule
+const IdAPIRandom = () => { 
   const [mealData, setMealData] = useState(null);
 
   useEffect(() => {

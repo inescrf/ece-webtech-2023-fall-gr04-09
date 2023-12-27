@@ -9,7 +9,7 @@ export default function ModifyMyArticle() {
   const { strMeal } = router.query;
   const categoryOptions = ['Beef', 'Chicken', 'Dessert', 'Lamb', 'Miscellaneous', 'Pasta', 'Pork', 'Seafood', 'Side', 'Starter', 'Vegan', 'Vegetarian', 'Breakfast', 'Goat'];
   const areaOptions = ["American", "British", "Canadian", "Chinese", "Croatian", "Dutch", "Egyptian", "Filipino", "French", "Greek", "Indian", "Irish", "Italian", "Jamaican", "Japanese", "Kenyan", "Malaysian", "Mexican", "Moroccan", "Polish", "Portuguese", "Russian", "Spanish", "Thai", "Tunisian", "Turkish", "Unknown", "Vietnamese"];
-  const { profile } = useContext(UserContext)
+  const { user } = useContext(UserContext)
   const supabase = useSupabaseClient();
   const [formData, setFormData] = useState({
     strMeal: '',
@@ -69,7 +69,7 @@ export default function ModifyMyArticle() {
           .from('articles')
           .select('*')
           .eq('strMeal', strMeal)
-          .eq('emailCreator', profile.email)
+          .eq('emailCreator', user.email)
           .single();
 
         if (error) {
@@ -127,7 +127,7 @@ export default function ModifyMyArticle() {
         // Your update fields here...
       ])
       .eq('strMeal', formData.strMeal)
-      .eq('emailCreator', profile.email);
+      .eq('emailCreator', user.email);
 
     if (error) {
       console.error('Error updating article:', error.message);

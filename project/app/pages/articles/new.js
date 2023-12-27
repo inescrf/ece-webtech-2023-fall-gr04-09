@@ -5,7 +5,7 @@ import Layout from '../../components/Layout';
 import UserContext from '../../components/UserContext';
 
 export default function CreateArticle() {
-  const { profile } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const supabase = useSupabaseClient();
   const [message, setMessage] = useState(null);
   const [ingredientCount, setIngredientCount] = useState(5);
@@ -54,18 +54,18 @@ export default function CreateArticle() {
     e.preventDefault();
   
     // Check if profile is defined before accessing email
-    if (!profile) {
+    if (!user) {
       // Handle the case where profile is undefined, e.g., redirect to login or display an error message
       console.error("User profile is undefined");
       // You can add further error handling or redirection logic here
       return;
     }
   
-    const userEmail = profile.email;
+    const userEmail = user.email;
     
     const { data, error } = await supabase
       .from('articles')
-      .insert([{ ...formData, emailCreator: profile.email }]);
+      .insert([{ ...formData, emailCreator: user.email }]);
 
     if (error) {
       setMessage('An error occurred: ' + error.message);

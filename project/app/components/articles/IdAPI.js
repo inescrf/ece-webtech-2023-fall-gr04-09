@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { createClient } from '@supabase/supabase-js';
 import GravatarComponent from '../GravatarComponent';
-import Comment from '../../components/comments/Comment';
-import NewComment from '../../components/comments/NewComment'; // Importer le composant NewComment
+import Comment from '../comments/Comment';
+import NewComment from '../comments/NewComment'; // Importer le composant NewComment
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;

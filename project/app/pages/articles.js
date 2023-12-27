@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout.js';
-import RandomMealComponent from '../components/articles/idAPIRandom.js';
+import RandomMealComponent from '../components/articles/IdAPIRandom.js';
 import UserRandomMealComponent from '../components/articles/IdRandomUser.js';
 
 const RepasLayout = () => {
