@@ -86,6 +86,9 @@ export default function Articles() {
                     Area
                   </th>
                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900">
+                    View
+                  </th>
+                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900">
                     Modify
                   </th>
                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-900">
@@ -102,6 +105,14 @@ export default function Articles() {
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-slate-500">{article.strCategory}</td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-slate-500">{article.strArea}</td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm">
+
+                      <Link
+                        href={`/articles/${encodeURIComponent(article.idMeal)}`}
+                      >
+                        <span className="text-camel hover:text-beige-2 cursor-pointer">View</span>
+                      </Link>
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm">
                       <Link
                         href={`/articles/edit?strMeal=${encodeURIComponent(article.strMeal)}`}
                       >
@@ -111,10 +122,7 @@ export default function Articles() {
                     <td className="whitespace-nowrap px-3 py-4 text-sm">
                       <span
                         onClick={() => handleDeleteClick(article)}
-                        className="text-red-500 hover:text-red-700 cursor-pointer"
-                      >
-                        Delete
-                      </span>
+                        className="text-red-500 hover:text-red-700 cursor-pointer">Delete</span>
                     </td>
                   </tr>
                 ))}
@@ -133,7 +141,7 @@ export default function Articles() {
       {deleteConfirmation && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-4 rounded shadow-lg">
-          <p className="text-camel text-lg mb-4">Are you sure you want to delete the article named &quot;{deleteConfirmation.strMeal}&quot; and all the comments ?</p>
+            <p className="text-camel text-lg mb-4">Are you sure you want to delete the article named &quot;{deleteConfirmation.strMeal}&quot; and all the comments ?</p>
             <div className="flex justify-end">
               <button
                 onClick={() => handleDeleteConfirmation(deleteConfirmation)}
