@@ -28,20 +28,20 @@ export default function Page() {
       <br /> 
       <br /> 
       <div className="flex flex-col lg:flex-row items-center justify-center">
-        {/* Partie gauche (Questions & Réponses) */}
+        {/* Partie gauche (Questions &amp; Réponses) */}
         <div className="lg:w-1/2 p-4 bg-green-1 text-white">
           <h2 className="text-xl text-gray-800 font-bold mb-4">Have a question? Maybe the answer is already here:</h2>
           <ul className="list-disc pl-4 text-white">
             <li className="mb-4 ">
               <h3 className="text-green-hover font-bold">How can I submit a recipe to be added to your site?</h3>
               <p>
-                If you have a recipe you'd like to share, you simply need to create an account or log in with your GitHub account and go to your Profile page. There, you can click on "add an article." Make sure to include all the details of the recipe, including the ingredients, preparation steps, and a photo if possible.
+                If you have a recipe you&apos;d like to share, you simply need to create an account or log in with your GitHub account and go to your Profile page. There, you can click on &quot;add an article.&quot; Make sure to include all the details of the recipe, including the ingredients, preparation steps, and a photo if possible.
               </p>
             </li>
             <li className="mb-4">
-              <h3 className="text-green-hover font-bold">How does the "Random Meals" category work?</h3>
+              <h3 className="text-green-hover font-bold">How does the &quot;Random Meals&quot; category work?</h3>
               <p>
-                Our "Random Meals" category generates a random recipe from those available on our platform. It's a great way to discover new recipes and get inspiration for your next meals. Just click on the "Random Meals" button, and a selection of dishes will appear. Check out the recipe for the one that looks most appealing to you!
+                Our &quot;Random Meals&quot; category generates a random recipe from those available on our platform. It&apos;s a great way to discover new recipes and get inspiration for your next meals. Just click on the &quot;Random Meals&quot; button, and a selection of dishes will appear. Check out the recipe for the one that looks most appealing to you!
               </p>
             </li>
             <li className="mb-4">
