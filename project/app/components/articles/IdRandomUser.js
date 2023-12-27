@@ -22,7 +22,7 @@ const IdRandomUser = () => {
         }
 
         setMealData(data[0]); 
-        console.log(data[0]?.idMeal); 
+        //console.log(data[0]?.idMeal); 
       } catch (error) {
         console.error('Error fetching random article details:', error.message);
       }
