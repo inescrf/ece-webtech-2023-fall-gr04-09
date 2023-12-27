@@ -10,12 +10,11 @@ const IdRandomUser = () => {
   const [mealData, setMealData] = useState(null);
 
   useEffect(() => {
-    // Fetch random article details
     const fetchRandomArticle = async () => {
       try {
         const { data, error } = await supabase
           .from('random_articles')
-          .select('strMeal, emailCreator, strMealThumb')
+          .select('strMeal, emailCreator, strMealThumb, idMeal')
           .limit(1);
         if (error) {
           console.error(error);
@@ -23,6 +22,7 @@ const IdRandomUser = () => {
         }
 
         setMealData(data[0]); 
+        console.log(data[0]?.idMeal); 
       } catch (error) {
         console.error('Error fetching random article details:', error.message);
       }
