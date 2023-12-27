@@ -95,11 +95,7 @@ export default function Page() {
                 <FaBook className="mr-3" /> My Articles
               </span>
             </Link>
-            <Link href="/profile/edit" passHref>
-              <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg">
-                <FaUserEdit className="mr-3" /> Edit profile
-              </span>
-            </Link>
+
             {adminStatus && (
               <Link href="/admin/contacts" passHref>
                 <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg">
