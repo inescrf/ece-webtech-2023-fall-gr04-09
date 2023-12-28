@@ -4,8 +4,8 @@
 
 ## Deliverables
 
-- Vercel URL: *place your URL**
-- Supabase project URL: *place your URL**
+- Vercel URL: https://ece-webtech-2023-fall-gr04-09.vercel.app/
+- Supabase project URL: https://supabase.com/dashboard/project/etvejangzykpgoboshyc
 
 ## Authors
  
