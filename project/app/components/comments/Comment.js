@@ -143,7 +143,7 @@ const Comment = ({ mealId }) => {
         <div>
           <br />
           {comments.length === 0 ? (
-            <p className='text-center'>No comments for the moment</p>
+            <p className='text-center dark:text-white'>No comments for the moment</p>
           ) : (
             <ul className="space-y-4">
               {comments.map((comment) => (

@@ -151,7 +151,7 @@ export default function ModifyMyArticle() {
       <form className="[&_span]:block grid gap-3" onSubmit={onSubmit}>
         <div>
           <label>
-            <span className="block font-bold mb-1">Meal name</span>
+            <span className="block font-bold mb-1 dark:text-white">Meal name</span>
             <input
               type="text"
               name="strMeal"
@@ -164,7 +164,7 @@ export default function ModifyMyArticle() {
 
         <div>
           <label>
-            <span className="block font-bold mb-1">Category</span>
+            <span className="block font-bold mb-1 dark:text-white">Category</span>
             <select
               name="strCategory"
               value={formData.strCategory}
@@ -183,7 +183,7 @@ export default function ModifyMyArticle() {
 
         <div>
           <label>
-            <span className="block font-bold mb-1">Area</span>
+            <span className="block font-bold mb-1 dark:text-white">Area</span>
             <select
               name="strArea"
               value={formData.strArea}
@@ -202,7 +202,7 @@ export default function ModifyMyArticle() {
 
         <div>
           <label>
-            <span className="block font-bold mb-1">Instructions</span>
+            <span className="block font-bold mb-1 dark:text-white">Instructions</span>
             <textarea
               name="strInstructions"
               value={formData.strInstructions}
@@ -215,7 +215,7 @@ export default function ModifyMyArticle() {
 
         <div>
           <label>
-            <span className="block font-bold mb-1">Meal Thumb (Image URL)</span>
+            <span className="block font-bold mb-1 dark:text-white">Meal Thumb (Image URL)</span>
             <input
               type="text"
               name="strMealThumb"
@@ -229,7 +229,7 @@ export default function ModifyMyArticle() {
 
         <div>
           <label>
-            <span className="block font-bold mb-1">Meal Tags</span>
+            <span className="block font-bold mb-1 dark:text-white">Meal Tags</span>
             <input
               type="text"
               name="strTags"
@@ -242,7 +242,7 @@ export default function ModifyMyArticle() {
 
         <div>
           <label>
-            <span className="block font-bold mb-1">Youtube Video Link</span>
+            <span className="block font-bold mb-1 dark:text-white">Youtube Video Link</span>
             <input
               type="text"
               name="strYoutube"
@@ -257,7 +257,7 @@ export default function ModifyMyArticle() {
         {[...Array(ingredientCount).keys()].map((index) => (
           <div key={index}>
             <label>
-              <span className="block font-bold mb-1">{`Ingredient ${index + 1}`}</span>
+              <span className="block font-bold mb-1 dark:text-white">{`Ingredient ${index + 1}`}</span>
               <input
                 type="text"
                 name={`strIngredient${index + 1}`}
@@ -267,7 +267,7 @@ export default function ModifyMyArticle() {
               />
             </label>
             <label>
-              <span className="block font-bold mb-1">{`Measure ${index + 1}`}</span>
+              <span className="block font-bold mb-1 dark:text-white">{`Measure ${index + 1}`}</span>
               <input
                 type="text"
                 name={`strMeasure${index + 1}`}

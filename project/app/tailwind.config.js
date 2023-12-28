@@ -5,6 +5,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       backgroundImage: {
@@ -18,8 +19,15 @@ module.exports = {
         'beige-1': '#fefae0',
         'beige-2': '#faedcd',
         'camel': '#d4a373',
-        'green-hover': '#828773'
-      }
+        'green-hover': '#828773',
+        'dark-color': '#1f2937'
+      },
+      backgroundColor: {
+        dark: { // Couleurs de fond pour le mode sombre
+          DEFAULT: '#1f2937', 
+          
+        },
+      },
     },
   },
   plugins: [

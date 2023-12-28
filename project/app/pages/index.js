@@ -36,7 +36,7 @@ export default function Page() {
                 About Us
               </Link>
             </button>
-            <button className="bg-green-1 text-beige-2 font-bold py-3 px-6 rounded text-lg hover:bg-green-hover">
+            <button className="bg-green-1 text-beige-2 font-bold py-3 px-6 rounded text-lg hover:bg-green-hover dark:text-dark-color">
               <Link href="/contacts">
                 Contact Us
               </Link>

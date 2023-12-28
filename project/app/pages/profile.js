@@ -86,19 +86,19 @@ export default function Page() {
           {/* Colonne de droite pour les boutons d'action */}
           <div className="flex flex-col items-center w-1/2 space-y-6 self-center">
             <Link href="/articles/new" passHref>
-              <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg">
+              <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg dark:bg-beige-2 dark:hover:bg-beige-1">
                 <FaPen className="mr-3" /> Create an Article
               </span>
             </Link>
             <Link href="/articles/view" passHref>
-              <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg">
+              <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg dark:bg-beige-2 dark:hover:bg-beige-1">
                 <FaBook className="mr-3" /> My Articles
               </span>
             </Link>
 
             {adminStatus && (
               <Link href="/admin/contacts" passHref>
-                <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg">
+                <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg dark:bg-beige-2 dark:hover:bg-beige-1">
                   <FaPen className="mr-3" /> Admin page
                 </span>
               </Link>
