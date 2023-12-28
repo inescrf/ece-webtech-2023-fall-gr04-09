@@ -36,6 +36,11 @@ export default function Header() {
         </span>
       </Link>
       <ul className="flex gap-5">
+      <li className="rounded py-1 px-2 hover:bg-green-hover hover:text-slate-100">
+          <Link href="/articles/search">
+            Search Meal
+          </Link>
+        </li>
         <li className="rounded py-1 px-2 hover:bg-green-hover hover:text-slate-100">
           <Link href="/articles">
             Random Meals Idea
