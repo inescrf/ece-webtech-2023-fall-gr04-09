@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import Layout from '../../components/Layout';
+import Link from 'next/link';
+
 
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -34,7 +36,7 @@ const PostsList = () => {
         if (searchQuery !== '') {
             fetchPosts();
         }
-    }, [searchQuery]); 
+    }, [searchQuery]);
 
     return (
         <Layout>
@@ -50,9 +52,17 @@ const PostsList = () => {
                     <p>Loading...</p>
                 ) : (
                     <ul>
-                        {posts.map((post) => (
-                            <li key={post.id}>{post.strMeal}</li>
-                        ))}
+                        <div className="mt-8 text-center">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                                {posts.map((post) => (
+                                    <li key={post.id}>{post.strMeal}
+                                        <Link href={`/articles/${post.idMeal}`}>
+                                            <img src={post.strMealThumb} alt={post.strMeal} className="p-4 bg-beige-1 shadow-lg rounded-lg" />
+                                        </Link></li>
+
+                                ))}
+                            </div>
+                        </div>
                     </ul>
                 )}
             </div>
@@ -62,3 +72,4 @@ const PostsList = () => {
 };
 
 export default PostsList;
+

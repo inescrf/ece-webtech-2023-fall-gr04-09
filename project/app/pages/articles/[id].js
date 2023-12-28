@@ -14,7 +14,6 @@ const ArticlePage = () => {
         {id && <IdMealComponent mealId={id} />}
       </div>
 
-      {/* Afficher les composants Comment et NewComment en bas */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
         <div>
           {id && <Comment mealId={id} />}
