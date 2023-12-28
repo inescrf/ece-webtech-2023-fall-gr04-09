@@ -14,7 +14,7 @@ export default function Page() {
           {profile ? (
             <p>Welcome {profile.user_metadata?.user_name}!</p>
           ) : (
-            <p>Welcome !</p>
+            <p>Welcome to AdaltaCook !</p>
           )}
         </h1>
         <p><br /></p>

@@ -5,6 +5,9 @@ import { useContext, useEffect } from 'react';
 import UserContext from './UserContext';
 import { ThemeContext } from './ThemeContext'; 
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { SearchIcon } from '@heroicons/react/outline';
+
+
 
 export default function Header() {
   const { user, logout } = useContext(UserContext);
@@ -30,17 +33,20 @@ export default function Header() {
   return (
     <header className="flex bg-green-1 px-10 py-2">
       <Link href={`/`} className="flex-grow flex items-center">
-        <Image src="/adaltas.svg" className='cursor-pointer h-6 mr-5' alt="Adaltas Logo" width={25} height={25} />
+        <Image src="/adaltacook.png" className='cursor-pointer h-6 mr-5' alt="Adaltas Logo" width={50} height={200} />
         <span className="text-slate-100 rounded py-1 px-2 hover:bg-green-hover hover:text-slate-100">
-          Web technologies
+          AdaltaCook
         </span>
       </Link>
       <ul className="flex gap-5">
-      <li className="rounded py-1 px-2 hover:bg-green-hover hover:text-slate-100">
+        <li className="rounded py-1 px-2 hover:bg-green-hover hover:text-slate-100">
           <Link href="/articles/search">
-            Search Meal
+            <span className="flex items-center cursor-pointer">
+              <SearchIcon className="w-5 h-5 mr-2" />
+            </span>
           </Link>
         </li>
+
         <li className="rounded py-1 px-2 hover:bg-green-hover hover:text-slate-100">
           <Link href="/articles">
             Random Meals Idea

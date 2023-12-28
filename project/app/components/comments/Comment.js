@@ -149,7 +149,7 @@ const Comment = ({ mealId }) => {
               {comments.map((comment) => (
                 <li key={comment.idComment} className="border rounded p-4">
                   <div className="flex justify-between items-center mb-2">
-                    <strong className="text-lg">{comment.commentCreator || 'Unauthenticated User'}</strong>
+                    <strong className="text-lg dark:text-white">{comment.commentCreator || 'Unauthenticated User'}</strong>
                     <span className="text-gray-500 text-sm">
                       {new Date(comment.created_at).toLocaleString()}
                     </span>
@@ -158,7 +158,7 @@ const Comment = ({ mealId }) => {
                   <GravatarComponent email={comment.commentCreator} size={75} />
 
                   <div>
-                    <p className="text-gray-800">{comment.comment}</p>
+                    <p className="text-gray-800 dark:text-white">{comment.comment}</p>
                     <div className="flex items-center gap-2">
                       <Rating rating={comment.note} readOnly={true} />
                     </div>

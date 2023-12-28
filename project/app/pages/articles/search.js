@@ -42,7 +42,7 @@ const PostsList = () => {
                     <input
                         className="max-w-md p-4 w-full p-2 border-2 border-green-1 rounded"
                         type="text"
-                        placeholder="Search for meals..."
+                        placeholder="Search among user meals... "
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
@@ -51,23 +51,24 @@ const PostsList = () => {
                     <p></p>
                 ) : (
                     <ul>
-                        <div className="mt-8 text-center">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                                {meals.map((meal) => (
-                                    <li key={meal.idMeal}>
-                                        {meal.strMeal}
-                                        <Link href={`/articles/${meal.idMeal}`}>
-                                            <img
-                                                src={meal.strMealThumb}
-                                                alt={meal.strMeal}
-                                                className="p-4 bg-beige-1 shadow-lg rounded-lg"
-                                            />
-                                        </Link>
-                                    </li>
-                                ))}
-                            </div>
-                        </div>
-                    </ul>
+                    <div className="mt-8 text-center">
+                      <div className=" text-camel grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 dark:text-white">
+                        {meals.map((meal) => (
+                          <li key={meal.idMeal}>
+                            {meal.strMeal}
+                            <Link href={`/articles/${meal.idMeal}`}>
+                              <img
+                                src={meal.strMealThumb}
+                                alt={meal.strMeal}
+                                className="p-4 bg-beige-1 shadow-lg rounded-lg w-full h-40 object-cover"
+                                // Utilisez les classes "w-full" et "h-40" pour définir une largeur fixe et une hauteur fixe pour toutes les images
+                              />
+                            </Link>
+                          </li>
+                        ))}
+                      </div>
+                    </div>
+                  </ul>
                 )}
             </div>
         </Layout>
