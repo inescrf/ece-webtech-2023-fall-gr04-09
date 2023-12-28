@@ -83,7 +83,6 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Colonne de droite pour les boutons d'action */}
           <div className="flex flex-col items-center w-1/2 space-y-6 self-center">
             <Link href="/articles/new" passHref>
               <span className="rounded py-3 px-4 text-camel border border-camel hover:bg-beige-2 hover:text-camel flex items-center cursor-pointer text-lg dark:bg-beige-2 dark:hover:bg-beige-1">
