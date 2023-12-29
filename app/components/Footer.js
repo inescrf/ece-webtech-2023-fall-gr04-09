@@ -8,14 +8,14 @@ export default function Footer() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Powered by Web-Tech GR-04
+        Powered by Web-Tech GR-04-09
       </a>
       <Image
-        src="/adaltacook.png" // Assurez-vous que le chemin relatif correspond à l'emplacement de votre image dans le dossier "public"
+        src="/adaltacook.png"
         alt="Adaltas Logo"
         width={35}
         height={35}
-        className="cursor-pointer h-6 mr-5 absolute bottom-2 right-2" // Utilisez les classes "absolute", "bottom-2" et "right-2" pour positionner l'image en bas à droite
+        className="cursor-pointer h-6 mr-5 absolute bottom-2 right-2"
       />
     </footer>
   );

@@ -11,14 +11,14 @@ const GravatarComponent = ({ email, size }) => {
 
   useEffect(() => {
     displayGravatar();
-  }, [email, size]); // call gravatar when email or size change
+  }, [email, size]);
 
   const displayGravatar = () => {
     if (email) {
       const gravatarURL = getGravatarURL(email, size);
       setAvatarURL(gravatarURL);
     } else {
-      // if no mail it print defaut gravatar picture
+
       setAvatarURL(`https://www.gravatar.com/avatar/default?s=${size}`);
     }
   };

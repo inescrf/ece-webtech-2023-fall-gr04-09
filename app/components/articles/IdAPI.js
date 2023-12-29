@@ -112,13 +112,13 @@ const IdMealComponent = ({ mealId }) => {
         {showInstructions ? 'Hide Instructions' : 'See Instructions'}
       </button>
       <p className={`text-lg ${showInstructions ? 'text-green-hover' : 'text-green-2'}`}>
-         {showInstructions ? mealData && mealData.strInstructions : '   '}
+        {showInstructions ? mealData && mealData.strInstructions : '   '}
       </p>
 
       <div className="text-blue-500">
         Youtube video: <a href={mealData && mealData.strYoutube} target="_blank" rel="noopener noreferrer">{mealData && mealData.strYoutube}</a>
       </div>
-     
+
     </div>
   );
 };

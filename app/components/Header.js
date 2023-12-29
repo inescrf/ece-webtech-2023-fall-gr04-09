@@ -13,17 +13,14 @@ export default function Header() {
   const { user, logout } = useContext(UserContext);
   const { theme, setTheme } = useContext(ThemeContext);
 
-  // Fonction pour basculer le thème
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    // Appliquer la classe dark au body
     if (typeof window !== 'undefined') {
       document.documentElement.classList.toggle('dark', newTheme === 'dark');
     }
   };
 
-  // S'assurer que la classe est correcte au chargement de la page
   useEffect(() => {
     if (typeof window !== 'undefined') {
       document.documentElement.classList.toggle('dark', theme === 'dark');
@@ -67,7 +64,6 @@ export default function Header() {
             Contact us
           </Link>
         </li>
-        {/* Bouton de basculement du thème */}
         <li className="py-1 px-2">
           <button onClick={toggleTheme}>
             {theme === 'light' ? <FaMoon /> : <FaSun />}

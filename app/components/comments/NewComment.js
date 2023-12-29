@@ -52,7 +52,6 @@ const NewComment = ({ mealId }) => {
         note: 0,
       });
 
-      // Auto-refresh the page after 2 seconds
       setTimeout(() => {
         window.location.reload();
       }, 1000);
@@ -79,7 +78,7 @@ const NewComment = ({ mealId }) => {
             name="comment"
             value={formData.comment}
             onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
-            className="w-full p-2 border rounded text-sm" 
+            className="w-full p-2 border rounded text-sm"
           />
         </label>
         <label>
@@ -88,7 +87,7 @@ const NewComment = ({ mealId }) => {
             type="text"
             value={formData.commentCreator}
             onChange={(e) => setFormData({ ...formData, commentCreator: e.target.value })}
-            className="w-full p-2 border rounded text-sm" 
+            className="w-full p-2 border rounded text-sm"
           />
         </label>
         <div className="text-center">
@@ -100,7 +99,7 @@ const NewComment = ({ mealId }) => {
           </button>
         </div>
       </form>
-      
+
       {successMessage && (
         <div className="text-green-600 text-center mt-4">
           {successMessage}

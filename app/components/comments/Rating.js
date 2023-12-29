@@ -6,7 +6,7 @@ const Rating = ({ rating, readOnly, onChange }) => {
   const handleClick = (value) => {
     if (!readOnly) {
       setSelectedRating(value);
-      onChange(value); // Appel de la fonction de rappel onChange
+      onChange(value);
     }
   };
 

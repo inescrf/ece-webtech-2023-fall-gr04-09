@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image'; // Importez le composant Image
+import Image from 'next/image';
 
 const fetchDataFromApi = async (apiUrl) => {
   try {
@@ -22,7 +22,7 @@ const fetchRandomMeal = async () => {
   return fetchDataFromApi('https://www.themealdb.com/api/json/v1/1/random.php');
 };
 
-const IdAPIRandom = () => { 
+const IdAPIRandom = () => {
   const [mealData, setMealData] = useState(null);
 
   useEffect(() => {
@@ -45,12 +45,11 @@ const IdAPIRandom = () => {
           <h2 className="text-xl text-green-hover font-bold mb-2">{mealData.strMeal}</h2>
           <p className="text-camel mb-2">{mealData.strArea} speciality </p>
           <Link href={`/articles/${mealData.idMeal}`}>
-            {/* Remplacer <img> par <Image> */}
-            <Image 
-              src={mealData.strMealThumb} 
-              alt={mealData.strMeal} 
-              width={640} // Vous pouvez ajuster ces valeurs
-              height={360} 
+            <Image
+              src={mealData.strMealThumb}
+              alt={mealData.strMeal}
+              width={640}
+              height={360}
               className="w-full h-40 object-cover mb-2 rounded-t-lg"
             />
           </Link>

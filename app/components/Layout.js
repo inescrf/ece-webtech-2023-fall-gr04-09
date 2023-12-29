@@ -10,9 +10,9 @@ export default function Layout({ children, title, description }) {
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col min-h-screen dark:bg-[#1f2937]"> {/* Appliquer le fond sombre ici */}
+      <div className="flex flex-col min-h-screen dark:bg-[#1f2937]"> 
         <Header />
-        <main className="flex-grow w-full p-6 md:p-10 bg-white dark:bg-[#1f2937]"> {/* Ajouter le fond clair pour le mode clair et sombre pour le mode sombre */}
+        <main className="flex-grow w-full p-6 md:p-10 bg-white dark:bg-[#1f2937]"> 
           {children}
         </main>
         <Footer />
