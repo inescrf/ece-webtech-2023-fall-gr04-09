@@ -1,6 +1,21 @@
 # Blogging application - ECE Webtech project
 
-- *introduction, pre-requisites, installation, usage...**
+- Our website is for food lovers. It features recipes from all over the world, sorted by category (Meat, Vegetarian, Pasta, Side ...).
+Users can create an account or log in with GitHub (in which case their Gravatar will be automatically synchronized). Once connected, they in turn can share their favorite recipes by posting an article on the site, including a photo of the recipe, ingredients, measurements and steps to follow, and in the best case a youtube link to a video of the recipe. Users can also edit their articles, delete them...
+On the site, all visitors can look at the recipes and post a comment on a recipe they like, also giving it a 5-star rating.
+We also have a "Random Meal" page which generates a random recipe when a visitor runs out of ideas for the evening meal. Two categories are presented: random meals among the site's recipes, and random meals among users' recipes. 
+Finally, for admins, it's possible to access all messages that have been sent on the site's "Contact Us" page. 
+We hope you enjoy a culinary journey through this site :D
+
+- To launch the site locally on your machine, simply follow these steps: 
+1. Clone the repo on your machine
+2. Create a ``.env.local`` file in which you copy the contents of the ".env.example" file and add the environment variables (the URL of the Supabase database and the secret key).
+3. Go to the ``app`` folder on the repo
+4. Run the ``npm install`` command
+5. Then the command ``npm run build``.
+6. And finally ``npm run start``.
+The site will then be deployed on one of your localhost addresses! 
+
 
 ## Deliverables
 
