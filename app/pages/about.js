@@ -28,8 +28,8 @@ export default function Page() {
 
           <div>
             <img src="/teo.png" alt="Tes Sialelli" className="mx-auto h-40 w-40 rounded-full" />
-            <p className="font-semibold mt-2">Tes Sialelli</p>
-            <p>tes.sialelli@edu.ece.fr</p>
+            <p className="font-semibold mt-2">Teo Sialelli</p>
+            <p>teo.sialelli@edu.ece.fr</p>
           </div>
         </div>
       </div>
